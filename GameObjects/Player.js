@@ -49,26 +49,8 @@ class Player extends Moveable {
       }
   }
 
-  up() {
-    this.velocity_y = -1;
-    this.diraction = "up";
-  }
-  right() {
-    this.velocity_x = 1;
-    this.diraction = "right";
-  }
-  down() {
-    this.velocity_y = 1;
-    this.diraction = "down";
-  }
-  left() {
-    this.velocity_x = -1;
-    this.diraction = "left";
-  }
-
-  stop() {
-    this.velocity_x = 0;
-    this.velocity_y = 0;
+  IsColide(other) {
+    return other.x == this.x && other.y == this.y;
   }
 }
 
