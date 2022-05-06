@@ -1,4 +1,4 @@
-import { GameObject } from "./GameObject";
+import { GameObject } from "./GameObject.js";
 
 class Eatable extends GameObject {
   constructor(x, y) {

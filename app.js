@@ -1,10 +1,7 @@
-import { Ball } from "./GameObjects/Ball";
-import { Eatable } from "./GameObjects/Eatable";
-import { Enemy } from "./GameObjects/Enemy";
-import { GameObject } from "./GameObjects/GameObject";
-import { Moveable } from "./GameObjects/Moveable";
-import { Player } from "./GameObjects/Player";
-import { Wall } from "./GameObjects/Wall";
+import { Ball } from "./GameObjects/Ball.js";
+import { Enemy } from "./GameObjects/Enemy.js";
+import { Player } from "./GameObjects/Player.js";
+import { Wall } from "./GameObjects/Wall.js";
 import { GetWallLayout, GetFreeIndexesArray, RemoveAndReturnRandomItemFromArray} from "./OtherFunctions.js";
 
 // enum for objects
@@ -38,17 +35,15 @@ var game_state = false;
 
 var enemies_positions = [[1, 1],[21,21],[1,21],[21,1]];
 var context;
-var shape = new Object();
 var board;
 var score;
-var pac_color;
 var start_time;
 var time_elapsed;
 var interval;
 
 $(document).ready(function() {
 	context = canvas.getContext("2d");
-	start();
+	Start(38, 39, 40, 37, "red", "green", "blue", 0, 50);
 });
 
 function Start(up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food)
@@ -64,19 +59,19 @@ function Start(up, right, down, left, ball_5_color, ball_15_color, ball_25_color
 	for (let i = 0; i < board[0].length; i++) {
 		for (let j = 0; j < board.length; j++) {
 			if (board[i][j] == 1){
-				walls.push(new Wall(i, j));
+				walls.push(new Wall(j, i));
 			}
 		}
 	}
-	board[player_x, player_y] = 1;
 	for (let i = 0; i < number_of_enemies; i++)
 	{
 		enemies.push(new Enemy(enemies_positions[i][0], enemies_positions[i][1]));
-		board[enemies_positions[i][0], enemies_positions[i][1]] = 1;
+		board[enemies_positions[i][0]][enemies_positions[i][1]] = 1;
 	}
 	let free_indexes = GetFreeIndexesArray(board);
 	let player_position = RemoveAndReturnRandomItemFromArray(free_indexes);
-	player = new Player(player_position.x, player_position.y);
+	player = new Player(player_position.x, player_position.y, board);
+	board[player_position.x][player_position.y] = 1;
 	for (let i = 0; i < number_of_food*0.6; i++)
 	{
 	let position = RemoveAndReturnRandomItemFromArray(free_indexes);
@@ -106,8 +101,8 @@ function Start(up, right, down, left, ball_5_color, ball_15_color, ball_25_color
 function GameLoop() {
 	if (game_state){
 		Tick();
-		Render();
 		Collision();
+		Render();
 	} else {
 		window.clearInterval(interval);
 		if (score == 50)
@@ -119,107 +114,44 @@ function GameLoop() {
 
 function Tick()
 {
-	board[shape.i][shape.j] = 0;
-	let x = GetKeyPressed();
-	if (x == "up")
-	{
-		if (shape.j > 0 && board[shape.i][shape.j - 1] != 4)
-		{
-			shape.j--;
-		}
-	}
-	if (x == 2)
-	{
-		if (shape.j < 9 && board[shape.i][shape.j + 1] != 4)
-		{
-			shape.j++;
-		}
-	}
-	if (x == 3)
-	{
-		if (shape.i > 0 && board[shape.i - 1][shape.j] != 4)
-		{
-			shape.i--;
-		}
-	}
-	if (x == 4)
-	{
-		if (shape.i < 9 && board[shape.i + 1][shape.j] != 4)
-		{
-			shape.i++;
-		}
-	}
-	if (board[shape.i][shape.j] == 1)
-	{
-		score++;
-	}
-	board[shape.i][shape.j] = 2;
-	var currentTime = new Date();
-	time_elapsed = (currentTime - start_time) / 1000;
-	if (score >= 20 && time_elapsed <= 10)
-	{
-		pac_color = "green";
-	}
+	HandlePlayerMovement();
+	HandleScore();
+	eatables.forEach(eatable => { eatable.Tick() });
+	enemies.forEach(enemy => { enemy.Tick()	});
+	player.Tick();
 }
 
-function GetKeyPressed() {
-	if (keysDown[up_arrow]) {return "up";}
-	if (keysDown[right_arrow]) {return "right";}
-	if (keysDown[down_arrow]) {return "down";}
-	if (keysDown[left_arrow]) {return "left";}
+function HandlePlayerMovement() {
+	player.stop();
+	if (keysDown[up_arrow]) {player.up();}
+	if (keysDown[right_arrow]) {player.right();}
+	if (keysDown[down_arrow]) {player.down();}
+	if (keysDown[left_arrow]) {player.left();}
+}
+
+function HandleScore() {
+// TODO: add logic
 }
 
 function Render() {
 	canvas.width = canvas.width; //clean board
 	lblScore.value = score;
 	lblTime.value = time_elapsed;
-	for (var i = 0; i < board_height; i++)
-	{
-		for (var j = 0; j < board_width; j++)
-		{
-			var center = new Object();
-			center.x = i * 60 + 30;
-			center.y = j * 60 + 30;
-			if (board[i][j] == pacman) //draw pacman
-			{ 
-				context.beginPath();
-				context.arc(center.x, center.y, 30, 0.15 * Math.PI, 1.85 * Math.PI); // half circle
-				context.lineTo(center.x, center.y);
-				context.fillStyle = "yellow"; //color
-				context.fill();
-				context.beginPath();
-				context.arc(center.x + 5, center.y - 15, 5, 0, 2 * Math.PI); // circle
-				context.fillStyle = "black"; //color
-				context.fill();
-			}
-			else if (board[i][j] == wall)
-			{
-				context.beginPath();
-				context.rect(center.x - 30, center.y - 30, 60, 60);
-				context.fillStyle = "grey"; //color
-				context.fill();
-			}
-			else if (board[i][j] == ball_5_points)
-			{
-				context.beginPath();
-				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "red"; //color
-				context.fill();
-			}
-			else if (board[i][j] == ball_15_points)
-			{
-				context.beginPath();
-				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "green"; //color
-				context.fill();
-			}
-			else if (board[i][j] == ball_25_points)
-			{
-				context.beginPath();
-				context.arc(center.x, center.y, 15, 0, 2 * Math.PI); // circle
-				context.fillStyle = "blue"; //color
-				context.fill();
-			}
+	context.fillStyle = "black";
+	context.fillRect(0, 0, canvas.width, canvas.height);
+
+	walls.forEach(wall => { wall.Render(context) });
+	eatables.forEach(eatable => { eatable.Render(context) });
+	enemies.forEach(enemy => { enemy.Render(context) });
+	player.Render(context);
+}
+
+function Collision() {
+	for (let i = 0; i < eatables.length; i++) {
+		if (eatables[i].x == player.x && eatables[i].y == player.y) {
+			score += eatables[i].points
+			eatables.splice(i, 1);
+			break;
 		}
 	}
 }
