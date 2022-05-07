@@ -1,170 +1,161 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
-		<link rel="stylesheet" type="text/css" href="style.css" />
-		<script src="./jquery-3.4.1.slim.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script src="./jquery-3.4.1.slim.min.js"></script>
     <script type="module" src="./app.js"></script>
-		<script type="text/javascript" src="./form.js"></script>
-		<script type="text/javascript" src="./pages.js"></script>
-	</head>
+    <script type="text/javascript" src="./form.js"></script>
+    <script type="text/javascript" src="./pages.js"></script>
+</head>
 
-	<body>
-		<div id="Logo_header">
-			<img src="website_logo.png" width="40%" />
-		</div>
-		<div id="menu">
-			<ul>
-				<li><a href="#login" id="login_label">Login</a></li>
-				<li><a href="#welcome" id="welcome_label">LogOut</a></li>
-				<li><a href="#register" id="register_label">Register</a></li>
-				<li><a href="#about" id="aboutLabel" onclick="showModal()">About</a></li>
-			</ul>
-		</div>
-		<div id="content">
+<body>
+<header id="Logo_header">
+    <img src="website_logo.png" width="40%"/>
+</header>
+<div id="menu">
+    <ul>
+        <li><a id="login_label">Login</a></li>
+        <li><a id="welcome_label">LogOut</a></li>
+        <li><a id="register_label">Register</a></li>
+        <li><a id="aboutLabel" onclick="showModal()">About</a></li>
+    </ul>
+</div>
+<div id="content">
+    <div align="center" id="welcome_div">
+        <h1><font size="10" color="black"> Welcome</font></h1>
+        <button class="btn" id="register_button">Register</button>
+        <button class="btn" id="login_button">Login</button>
+    </div>
+    <div align="center" id="register_div" hidden>
+        <h1><font size="10" color="black"> Register</font></h1>
+        <form>
+            <div class="container">
+                <hr>
+                <input id="F_username" type="text" placeholder="Enter Username" name="username" required>
+                <input id="F_password" type="password" placeholder="Enter Password" name="password" required>
+                <input id="F_repeat_password" type="password" placeholder="Repeat Password" name="repeat-password"
+                       required>
+                <input id="F_firstName" type="text" placeholder="Enter First Name" name="firstname" required>
+                <input id="F_lastName" type="text" placeholder="Enter Last name" name="lastname" required>
+                <input id="F_email" type="email" placeholder="Enter Email" name="email" required>
+                <input id="F_date" type="date" placeholder="Enter Birthdate" name="birthdate" required>
+                <hr>
 
-			<div align="center" id="welcome_div">
-				<h1> <font size="10" color="black"> Welcome</font></h1>
-				<button class="btn" id="register_button">Register</button>
-				<button class="btn" id="login_button">Login</button>
-			</div>
-	
-			<div align="center" id="register_div" hidden>
-				<h1> <font size="10" color="black"> Register</font></h1>
-				<form>
-					<div class="container">
-						<hr>
-						<input id="F_username" type="text" placeholder="Enter Username" name="username" required>
-						<input id="F_password" type="password" placeholder="Enter Password" name="password" required>
-						<input id="F_repeat_password" type="password" placeholder="Repeat Password" name="repeat-password" required>
-						<input id="F_firstName" type="text" placeholder="Enter First Name" name="firstname" required>
-						<input id="F_lastName" type="text" placeholder="Enter Last name" name="lastname" required>
-						<input id="F_email" type="email" placeholder="Enter Email" name="email" required>
-						<input id="F_date" type="date" placeholder="Enter Birthdate" name="birthdate" required>
-						<hr>
-	
-						<button onclick="check_details()" type="button" class="btn">Register Me!</button>
-					</div>
-	
-				</form>
-			</div>
+                <button onclick="check_details()" type="button" class="btn">Register Me!</button>
+            </div>
+        </form>
+    </div>
+    <div align="center" id="login_div" hidden>
+        <h1><font size="10" color="black"> Login</font></h1>
+        <form>
+            <div class="container">
+                <hr>
+                <input id="login_username" type="text" placeholder="Enter Username" name="username" required>
+                <input id="login_pass" type="password" placeholder="Enter Password" name="password" required>
+                <hr>
+                <button onclick="login()" type="button" class="btn">Log me in!!</button>
+            </div>
 
-			<div align="center" id="login_div" hidden>
-				<h1> <font size="10" color="black"> Login</font></h1>
-				<form>
-					<div class="container">
-						<hr>
-						<input id="login_username" type="text" placeholder="Enter Username" name="username" required>
-						<input id="login_pass" type="password" placeholder="Enter Password" name="password" required>
-						<hr>
-						<button onclick="login()" type="button" class="btn">Log me in!!</button>
-					</div>
-	
-				</form>
-			</div>
+        </form>
+    </div>
+    <div id="settings_div" hidden>
+        <h1><font size="10" color="black"> Settings</font></h1>
+        <form>
+            <div class="container">
+                <hr>
+                Keyboard Settings:
+                <input id="up_button" type="text" maxlength="1" placeholder="Up Button (deafult: &#8593)" value="38">
+                <input id="down_button" type="text" maxlength="1" placeholder="Down Button (deafult: &#8595)">
+                <input id="left_button" type="text" maxlength="1" placeholder="Left Button (deafult: &#8592)">
+                <input id="right_button" type="text" maxlength="1" placeholder="Right Button (deafult: &#8594)">
+                Pac-Dots Settings:
+                <p>(Please choose 50-90 Dots)</p>
+                <input id="pac_dots_num_settings" min="50" max="90" type="number" placeholder="invalid" value=50>
+                <p>5 points Pac-Dots :</p>
+                <input type="color" id="5_color" value="#FF726f"/>
+                <p>15 points Pac-Dots :</p>
+                <input type="color" id="15_color" value="#88C0D3"/>
+                <p>25 points Pac-Dots :</p>
+                <input type="color" id="25_color" value="#51C251"/>
+                Time Settings:
+                <p>(Please Choose a number greater then 60)</p>
+                <input id="time_setting" type="number" min="60" placeholder="invalid" value=60>
+                Monsters Settings:
+                <p>(Please choose 1-4 Monsters)</p>
+                <input id="monster_setting" type="number" min=1 max=4 placeholder="invalid" value=1>
+                <br/>
+                <button type="button" onclick="random_settings()">Random Settings</button>
+                <hr>
+                <div align="center">
+                    <button class="btn" id="start_game_button">Start Game</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span onclick="closeModal()" class="close">&times;</span>
+            <p>
+                <font color="black">
+                    Or Fadlon & Elran Oren!!!!!!!!!!!!!!
 
-			<div id="settings_div" hidden>
-				<h1> <font size="10" color="black"> Settings</font></h1>
-				<form>
-					<div class="container">
-						<hr>
-						Keyboard Settings:
-						<input id="up_button" type="text" maxlength="1" placeholder="Up Button (deafult: &#8593)" value="38">
-						<input id="down_button" type="text" maxlength="1" placeholder="Down Button (deafult: &#8595)">
-						<input id="left_button" type="text" maxlength="1" placeholder="Left Button (deafult: &#8592)">
-						<input id="right_button" type="text" maxlength="1" placeholder="Right Button (deafult: &#8594)">
-						Pac-Dots Settings:
-						<p>(Please choose 50-90 Dots)</p>
-						<input id="pac_dots_num_settings" min="50" max="90" type="number" placeholder="invalid" value=50>
-						<p>5 points Pac-Dots :</p>
-						<input type="color" id="5_color" value="#FF726f" />
-						<p>15 points Pac-Dots :</p>
-						<input type="color" id="15_color" value="#88C0D3" />
-						<p>25 points Pac-Dots :</p>
-						<input type="color" id="25_color" value="#51C251" />
-						Time Settings:
-						<p>(Please Choose a number greater then 60)</p>
-						<input id="time_setting" type="number" min="60" placeholder="invalid" value=60>
-						Monsters Settings:
-						<p>(Please choose 1-4 Monsters)</p>
-						<input id="monster_setting" type="number" min=1 max=4 placeholder="invalid" value=1>
-						<br />
-						<button type="button" onclick="random_settings()">Random Settings</button>
-						<hr>
-						<div align="center">
-							<button class="btn" id="start_game_button">Start Game</button>
-						</div>
-					</div>
-	
-				</form>
-	
-			</div>
+                </font>
+            </p>
+        </div>
+    </div>
+    <div id="game_div" hidden>
+        <h1>the game</h1>
+        <div id="score">
+            <label for="lblScore">SCORE:</label>
+            <input id="lblScore" type="text"/>
+        </div>
+        <div id="time">
+            <label for="lblTime">TIME:</label>
+            <input id="lblTime" type="text"/>
+        </div>
+        <div id="game">
+            <canvas id="canvas" height="690" width="690"></canvas>
+        </div>
+    </div>
+</div>
+<footer id="footer">
+    <p>2022 Pacman game website - By Elran Oren and Orel Fadlon. Contact: BestPacmanGame@sunActive.com</p>
+</footer>
 
-			<div id="myModal" class="modal">
+<script>
+    function showModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+    }
 
-				<!-- Modal content -->
-				<div class="modal-content">
-					<span onclick="closeModal()" class="close">&times;</span>
-					<p>
-						<font color="black">
-							Or Fadlon & Elran Oren!!!!!!!!!!!!!!
-	
-						</font>
-					</p>
-				</div>
-	
-			</div>
+    function closeModal() {
+        var modal = document.getElementById("myModal");
+        modal.style.display = "none";
+    }
 
-			<div id="game_div" hidden>
-				<h1>the game</h1>
-				<div id="score">
-					<label for="lblScore">SCORE:</label>
-					<input id="lblScore" type="text" />
-				</div>
-				<div id="time">
-					<label for="lblTime">TIME:</label>
-					<input id="lblTime" type="text" />
-				</div>
-				<div id="game">
-					<canvas id="canvas" height="690" width="690"></canvas>
-				</div>
-			</div>
-
-			<div id="footer">
-				<p>2022 Pacman game website - By Elran Oren and Orel Fadlon. Contact: BestPacmanGame@sunActive.com</p>
-			</div>
-	</body>
-	<script>
-		function showModal(){
-			var modal = document.getElementById("myModal");
-			modal.style.display = "block";
-		}
-
-		function closeModal() {
-			var modal = document.getElementById("myModal");
-    		modal.style.display = "none";
-		}
-
-		window.onclick = function (event) {
-			var modal = document.getElementById("myModal");
-    		if (event.target == modal) {
-        		closeModal();
-    	}
-
-	modal = document.getElementById('myModal');
-	var e = $.Event("keydown", {
-    keyCode: 27
-    });
-    $('body').keydown(function (e) {
-        if (e.keyCode == 27) {
+    window.onclick = function (event) {
+        var modal = document.getElementById("myModal");
+        if (event.target == modal) {
             closeModal();
         }
-        console.log(e);
-    });
-    $('#escape').click(function () {
-        $("body").trigger(e);
-    });
-}
-	</script>
-	
+
+        modal = document.getElementById('myModal');
+        var e = $.Event("keydown", {
+            keyCode: 27
+        });
+        $('body').keydown(function (e) {
+            if (e.keyCode == 27) {
+                closeModal();
+            }
+            // console.log(e);
+        });
+        $('#escape').click(function () {
+            $("body").trigger(e);
+        });
+    }
+</script>
+</body>
+
 </html>

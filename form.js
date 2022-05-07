@@ -17,8 +17,15 @@ function check_details() {
     check_email(email);
     check_username(username);
     if (is_valid) {
-        
-        var new_user = { username: username, password: password, firstName: first_name, lastName: last_name, email: email, birthdate: date };
+
+        var new_user = {
+            username: username,
+            password: password,
+            firstName: first_name,
+            lastName: last_name,
+            email: email,
+            birthdate: date
+        };
         all_users[all_users.length] = new_user;
         curr_user = new_user;
         $("#welcome_div").hide();
@@ -32,7 +39,7 @@ function check_details() {
 }
 
 function check_empty_fields_func(username, password, repeat_password, first_name, last_name, email, date) {
-    if (username == '' || password == '' || repeat_password == '' || first_name == '' || last_name == '' || email == '' || date == ''){
+    if (username == '' || password == '' || repeat_password == '' || first_name == '' || last_name == '' || email == '' || date == '') {
         alert("all fields must be filled!");
         is_valid = false;
     }
@@ -41,7 +48,7 @@ function check_empty_fields_func(username, password, repeat_password, first_name
 function check_password(password) {
     var pattern = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/;
     if (pattern.test(password) == false) {
-        alert("This password is invalid:" + "\n" + "-Password must be at least 8 characters" + "\n" + 
+        alert("This password is invalid:" + "\n" + "-Password must be at least 8 characters" + "\n" +
             "-Password must contain both letters and numbers");
         is_valid = false;
     }
@@ -95,7 +102,7 @@ function login() {
     var is_user_found = false;
     var username = $("#login_username").val();
     var password = $("#login_pass").val();
-    
+
     for (i = 0; i < all_users.length; i++) {
         if (all_users[i].username == username) {
             if (all_users[i].password == password) {
@@ -114,8 +121,7 @@ function login() {
         $("#about_div").hide();
         $("#settings_div").show();
         $("#game_div").hide();
-    }
-    else {
+    } else {
         alert("Your username or password are incorrect! please try again :)");
     }
 }
@@ -138,7 +144,7 @@ function random_settings() {
     document.getElementById("5_color").value = get_random_color();
     document.getElementById("15_color").value = get_random_color();
     document.getElementById("25_color").value = get_random_color();
-    document.getElementById("time_setting").value = Math.floor(Math.random()*100 + 61);
+    document.getElementById("time_setting").value = Math.floor(Math.random() * 100 + 61);
     document.getElementById("monster_setting").value = random_num(1, 5);
 }
 
@@ -151,18 +157,13 @@ function check_settings() {
     if (pac_dots_num == '' || pac_dots_num < 50 || pac_dots_num > 90) {
         alert("Pac dots input is invalid - choose a number between 50-90.");
         return false;
-    }
-
-    else if (time_sec == '' || time_sec < 60) {
+    } else if (time_sec == '' || time_sec < 60) {
         alert("Time input is invalid - choose a number more than 60.");
         return false;
-    }
-
-    else if (monsters_num == '' || monsters_num < 1 || monsters_num >= 5) {
+    } else if (monsters_num == '' || monsters_num < 1 || monsters_num >= 5) {
         alert("Monsters num input is invalid - choose a number between 1-4.");
         return false;
-    }
-    else
+    } else
         return true;
 }
 

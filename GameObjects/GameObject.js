@@ -1,18 +1,18 @@
 class GameObject {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-    this.width = 30;
-    this.height = 30;
-  }
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.width = 30;
+        this.height = 30;
+    }
 
-  Tick() {
+    Tick() {
 
-  }
+    }
 
-  Render(context) {
+    Render(context) {
 
-  }
+    }
 }
 
-export { GameObject };
+export {GameObject};
