@@ -53,7 +53,7 @@
   font-size: 14px;
 }
 
-
+  /* Menu CSS */
 nav {
     margin: 27px auto 0;
   
@@ -155,6 +155,7 @@ nav {
       color: #2BD6B4;
   }
 
+  /* Button CSS */
   .bn54 {
     position: relative;
     outline: none;
@@ -225,8 +226,11 @@ nav {
     }
   }
 
-
-  #login_username {
+/* Fileds CSS */
+  #login_username, #login_pass, #F_username, #F_password, #F_repeat_password,
+    #F_firstName, #F_lastName, #F_email, #F_date, #up_button, #down_button, 
+    #left_button, #right_button, #pac_dots_num_settings, #time_setting, 
+    #monster_setting{
     width: 400px;
     padding: 10px;
     font-size: 18px;
@@ -238,169 +242,18 @@ nav {
     transition: all 0.5s;
   }
   
-  #login_username:hover {
+  #login_username:hover:hover, #F_username:hover, #F_password:hover, 
+  #F_repeat_password:hover, #F_firstName:hover, #F_lastName:hover, 
+  #F_email:hover, #F_date:hover, #up_button:hover, #down_button:hover, 
+  #left_button:hover, #right_button:hover, #pac_dots_num_settings:hover,
+  #time_setting:hover, #monster_setting:hover{
     border: 2px solid rgba(255,255,255,0.5);
   }
-  #login_username:focus {
-    border: 2px solid rgba(255,255,255,0.5);
-    background: linear-gradient(to left top, #000, #4e2d69) fixed;
-  }
-
-  #login_pass {
-    width: 400px;
-    padding: 10px;
-    font-size: 18px;
-    outline:none;
-    background: linear-gradient(to left top, #000, #22132e) fixed;
-    border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.8);
-    transition: all 0.5s;
-  }
-  
-  #login_pass:hover {
-    border: 2px solid rgba(255,255,255,0.5);
-  }
-  #login_pass:focus {
-    border: 2px solid rgba(255,255,255,0.5);
-    background: linear-gradient(to left top, #000, #4e2d69) fixed;
-  }
-
-  #F_username {
-    width: 400px;
-    padding: 10px;
-    font-size: 18px;
-    outline:none;
-    background: linear-gradient(to left top, #000, #22132e) fixed;
-    border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.8);
-    transition: all 0.5s;
-  }
-  
-  #F_username:hover {
-    border: 2px solid rgba(255,255,255,0.5);
-  }
-  #F_username:focus {
-    border: 2px solid rgba(255,255,255,0.5);
-    background: linear-gradient(to left top, #000, #4e2d69) fixed;
-  }
-
-  #F_password {
-    width: 400px;
-    padding: 10px;
-    font-size: 18px;
-    outline:none;
-    background: linear-gradient(to left top, #000, #22132e) fixed;
-    border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.8);
-    transition: all 0.5s;
-  }
-  
-  #F_password:hover {
-    border: 2px solid rgba(255,255,255,0.5);
-  }
-  #F_password:focus {
-    border: 2px solid rgba(255,255,255,0.5);
-    background: linear-gradient(to left top, #000, #4e2d69) fixed;
-  }
-
-  #F_repeat_password {
-    width: 400px;
-    padding: 10px;
-    font-size: 18px;
-    outline:none;
-    background: linear-gradient(to left top, #000, #22132e) fixed;
-    border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.8);
-    transition: all 0.5s;
-  }
-  
-  #F_repeat_password:hover {
-    border: 2px solid rgba(255,255,255,0.5);
-  }
-  #F_repeat_password:focus {
-    border: 2px solid rgba(255,255,255,0.5);
-    background: linear-gradient(to left top, #000, #4e2d69) fixed;
-  }
-
-  #F_firstName {
-    width: 400px;
-    padding: 10px;
-    font-size: 18px;
-    outline:none;
-    background: linear-gradient(to left top, #000, #22132e) fixed;
-    border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.8);
-    transition: all 0.5s;
-  }
-  
-  #F_firstName:hover {
-    border: 2px solid rgba(255,255,255,0.5);
-  }
-  #F_firstName:focus {
-    border: 2px solid rgba(255,255,255,0.5);
-    background: linear-gradient(to left top, #000, #4e2d69) fixed;
-  }
-  #F_lastName {
-    width: 400px;
-    padding: 10px;
-    font-size: 18px;
-    outline:none;
-    background: linear-gradient(to left top, #000, #22132e) fixed;
-    border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.8);
-    transition: all 0.5s;
-  }
-  
-  #F_lastName:hover {
-    border: 2px solid rgba(255,255,255,0.5);
-  }
-  #F_lastName:focus {
-    border: 2px solid rgba(255,255,255,0.5);
-    background: linear-gradient(to left top, #000, #4e2d69) fixed;
-  }
-
-  #F_email {
-    width: 400px;
-    padding: 10px;
-    font-size: 18px;
-    outline:none;
-    background: linear-gradient(to left top, #000, #22132e) fixed;
-    border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.8);
-    transition: all 0.5s;
-  }
-  
-  #F_email:hover {
-    border: 2px solid rgba(255,255,255,0.5);
-  }
-  #F_email:focus {
-    border: 2px solid rgba(255,255,255,0.5);
-    background: linear-gradient(to left top, #000, #4e2d69) fixed;
-  }
-
-  #F_date {
-    width: 400px;
-    padding: 10px;
-    font-size: 18px;
-    outline:none;
-    background: linear-gradient(to left top, #000, #22132e) fixed;
-    border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0.2);
-    color: rgba(255,255,255,0.8);
-    transition: all 0.5s;
-  }
-  
-  #F_date:hover {
-    border: 2px solid rgba(255,255,255,0.5);
-  }
-  #F_date:focus {
+  #login_username:focus, #login_pass:focus, #F_username:focus, 
+  #F_password:focus, #F_repeat_password:focus,#F_firstName:focus,
+  #F_lastName:focus, #F_email:focus, #F_date:focus, #up_button:focus,
+  #down_button:focus, #left_button:focus, #right_button:focus,
+  #pac_dots_num_settings:focus,#time_setting:focus, #monster_setting:focus {
     border: 2px solid rgba(255,255,255,0.5);
     background: linear-gradient(to left top, #000, #4e2d69) fixed;
   }
