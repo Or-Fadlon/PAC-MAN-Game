@@ -2,26 +2,11 @@ var all_users;
 var curr_user;
 
 $(document).ready(function () {
-    $("#welcome_label").click(function () {
-        ShowDiv("#welcome_div");
-    });
-
-    $("#register_button").click(function () {
-        ShowDiv("#register_div")
-    });
-
-    $("#register_label").click(function () {
-        ShowDiv("#register_div");
-    });
-
-    $("#login_label").click(function () {
-        ShowDiv("#login_div");
-    });
-
-    $("#login_button").click(function () {
-        ShowDiv("#login_div");
-    });
-
+    $("#welcome_label").click(() => ShowDiv("#welcome_div"));
+    $("#register_button").click(() => ShowDiv("#register_div"));
+    $("#register_label").click(() => ShowDiv("#register_div"));
+    $("#login_label").click(() => ShowDiv("#login_div"));
+    $("#login_button").click(() => ShowDiv("#login_div"));
     $("#start_game_button").click(function () {
         if (!check_settings()) return;
         ShowDiv("#game_div");
