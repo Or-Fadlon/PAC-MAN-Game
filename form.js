@@ -139,7 +139,7 @@ function random_settings() {
     document.getElementById("15_color").value = get_random_color();
     document.getElementById("25_color").value = get_random_color();
     document.getElementById("time_setting").value = Math.floor(Math.random()*100 + 61);
-    document.getElementById("monster_setting").value = random_num(1, 4);
+    document.getElementById("monster_setting").value = random_num(1, 5);
 }
 
 
