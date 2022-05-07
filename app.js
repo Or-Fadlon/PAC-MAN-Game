@@ -26,10 +26,35 @@ var enemies = [];
 var eatables = [];
 
 
+
 $(document).ready(function() {
-	context = canvas.getContext("2d");
-	Start(38, 39, 40, 37, "red", "green", "blue", 2, 50);
+	$("#start_game_button").click(function () {
+        $("#welcome_div").hide();
+        $("#register_div").hide();
+        $("#login_div").hide();
+        $("#settings_div").hide();
+        $("#about_div").hide();
+        $("#game_div").show();
+		context = canvas.getContext("2d");
+		Start(38, 39, 40, 37, "red", "green", "blue", 2, 50);
+    });
+	
 });
+
+// function start_game_button(){
+// 	let c_s = check_settings();
+// 	if(c_s){
+// 		$("#welcome_div").hide();
+//         $("#register_div").hide();
+//         $("#login_div").hide();
+//         $("#settings_div").hide();
+//     	$("#about_div").hide();
+//         $("#game_div").show();
+// 		context = canvas.getContext("2d");
+// 		Start(38, 39, 40, 37, "red", "green", "blue", 2, 50);
+// 	}	
+// }
+
 
 function Start(up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food)
 {

@@ -27,6 +27,7 @@ function check_details() {
         $("#settings_div").hide();
         $("#about_div").hide();
         $("#settings_div").show();
+        $("#game_div").hide();
     }
 }
 
@@ -112,6 +113,7 @@ function login() {
         $("#settings_div").hide();
         $("#about_div").hide();
         $("#settings_div").show();
+        $("#game_div").hide();
     }
     else {
         alert("Your username or password are incorrect! please try again :)");
@@ -139,6 +141,7 @@ function random_settings() {
     document.getElementById("time_setting").value = Math.floor(Math.random()*100 + 61);
     document.getElementById("monster_setting").value = random_num(1, 4);
 }
+
 
 function check_settings() {
     var pac_dots_num = $("#pac_dots_num_settings").val();

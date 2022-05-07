@@ -92,12 +92,16 @@
 						<button type="button" onclick="random_settings()">Random Settings</button>
 						<hr>
 						<div align="center">
-							<button onclick="start_game()" type="button" class="btn">Start Game</button>
+							<button class="btn" id="start_game_button">Start Game</button>
 						</div>
 					</div>
 	
 				</form>
 	
+			</div>
+
+			<div id="game_div" hidden>
+				<canvas id="canvas" height="690" width="690"></canvas>
 			</div>
 
 
