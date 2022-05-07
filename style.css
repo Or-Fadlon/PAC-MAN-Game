@@ -48,7 +48,6 @@
 #Logo_header {
   padding: 0px;
   text-align: center;
-  background: black;
   color: white;
   font-size: 14px;
 }
@@ -157,6 +156,7 @@ nav {
 
   /* Button CSS */
   .bn54 {
+    font-family: 'Cherry Swash', cursive;
     position: relative;
     outline: none;
     text-decoration: none;
