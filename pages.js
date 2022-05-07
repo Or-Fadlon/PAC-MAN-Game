@@ -3,64 +3,34 @@ var curr_user;
 
 $(document).ready(function () {
   $("#welcome_label").click(function () {
-    $("#welcome_div").show();
-    $("#register_div").hide();
-    $("#login_div").hide();
-    $("#settings_div").hide();
-    $("#about_div").hide();
-    $("#game_div").hide();
+    ShowDiv("#welcome_div");
   });
 
   $("#register_button").click(function () {
-    $("#welcome_div").hide();
-    $("#register_div").show();
-    $("#login_div").hide();
-    $("#settings_div").hide();
-    $("#about_div").hide();
-    $("#game_div").hide();
+    ShowDiv("#register_div")
   });
 
   $("#register_label").click(function () {
-    $("#welcome_div").hide();
-    $("#register_div").show();
-    $("#login_div").hide();
-    $("#settings_div").hide();
-    $("#about_div").hide();
-    $("#game_div").hide();
+    ShowDiv("#register_div");
   });
 
   $("#login_label").click(function () {
-    $("#welcome_div").hide();
-    $("#register_div").hide();
-    $("#login_div").show();
-    $("#settings_div").hide();
-    $("#about_div").hide();
-    $("#game_div").hide();
+    ShowDiv("#login_div");
   });
 
   $("#login_button").click(function () {
-    $("#welcome_div").hide();
-    $("#register_div").hide();
-    $("#login_div").show();
-    $("#settings_div").hide();
-    $("#about_div").hide();
-    $("#game_div").hide();
+    ShowDiv("#login_div");
   });
 
   $("#start_game_button").click(function () {
     if (!check_settings()) return;
-    $("#welcome_div").hide();
-    $("#register_div").hide();
-    $("#login_div").hide();
-    $("#settings_div").hide();
-    $("#about_div").hide();
-    $("#game_div").show();
+    ShowDiv("#game_div");
 
     // let up = $("#up_button").val();
     // let right = $("#right_button").val();
     // let down = $("#down_button").val();
     // let left = $("#left_button").val();
-    
+
     //TODO: add register keys logic!
     let up = 38;
     let right = 39;
@@ -76,6 +46,14 @@ $(document).ready(function () {
 
     window.StartGame(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food);
   });
+
+  function ShowDiv(name){
+    let arr = ["#welcome_div", "#register_div", "#login_div", "#settings_div", "#about_div", "#game_div"];
+    arr.forEach(element => {
+          if (element == name) $(element).show();
+          else $(element).hide();
+      });
+  }
 
   var new_user = {
     username: "k",
