@@ -30,6 +30,27 @@ $(document).ready(function () {
             if (element == name) $(element).show();
             else $(element).hide();
         });
+        if(name!= "#game_div"){
+            document.getElementById("login_username").value = "";
+            document.getElementById("login_pass").value = "";
+            document.getElementById("up_button").value = "";
+            document.getElementById("down_button").value = "";
+            document.getElementById("left_button").value = "";
+            document.getElementById("right_button").value = "";
+            document.getElementById("pac_dots_num_settings").value = 50;
+            document.getElementById("5_color").value = "#FF726f";
+            document.getElementById("15_color").value = "#88C0D3";
+            document.getElementById("25_color").value = "#51C251";
+            document.getElementById("time_setting").value = 60;
+            document.getElementById("monster_setting").value = 1;
+            document.getElementById("F_username").value = "";
+            document.getElementById("F_password").value = "";
+            document.getElementById("F_repeat_password").value = "";
+            document.getElementById("F_firstName").value = "";
+            document.getElementById("F_lastName").value = "";
+            document.getElementById("F_email").value = "";
+            document.getElementById("F_date").value = "";
+        }
     }
 
     var new_user = {

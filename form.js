@@ -10,6 +10,8 @@ function check_details() {
     var email = $("#F_email").val();
     var date = $("#F_date").val();
     check_empty_fields_func(username, password, repeat_password, first_name, last_name, email, date);
+    if(!is_valid)
+        return;
     check_password(password);
     check_repeat_password(password, repeat_password);
     check_firstname(first_name);
