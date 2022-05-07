@@ -13,14 +13,13 @@
 <header id="Logo_header">
     <img src="website_logo.png" width="40%"/>
 </header>
-<div id="menu">
-    <ul>
-        <li><a id="login_label">Login</a></li>
-        <li><a id="welcome_label">LogOut</a></li>
-        <li><a id="register_label">Register</a></li>
-        <li><a id="aboutLabel" onclick="showModal()">About</a></li>
-    </ul>
-</div>
+<nav>
+	<a class="active" href="#login" id="login_label">Login</a>
+    <a href="#welcome" id="welcome_label">LogOut</a>
+    <a href="#register" id="register_label">Register</a>
+    <a href="#about" id="aboutLabel" onclick="showModal()">About</a>
+	<div class="animation start-home"></div>
+</nav>
 <div id="content">
     <div align="center" id="welcome_div">
         <h1><font size="10" color="black"> Welcome</font></h1>
@@ -58,13 +57,12 @@
         <h1><font size="10" color="black"> Settings</font></h1>
             <div class="container">
                 <hr>
-                Keyboard Settings:
+                <p>Keyboard Settings:</p> <br>
                 <input id="up_button" type="text" maxlength="1" placeholder="Up Button (deafult: &#8593)">
                 <input id="down_button" type="text" maxlength="1" placeholder="Down Button (deafult: &#8595)">
                 <input id="left_button" type="text" maxlength="1" placeholder="Left Button (deafult: &#8592)">
-                <input id="right_button" type="text" maxlength="1" placeholder="Right Button (deafult: &#8594)">
-                Pac-Dots Settings:
-                <p>(Please choose 50-90 Dots)</p>
+                <input id="right_button" type="text" maxlength="1" placeholder="Right Button (deafult: &#8594)"><br>
+                <p>Pac-Dots Settings: (Please choose 50-90 Dots)</p><br>
                 <input id="pac_dots_num_settings" min="50" max="90" type="number" placeholder="invalid" value=50>
                 <p>5 points Pac-Dots :</p>
                 <input type="color" id="5_color" value="#FF726f"/>
@@ -72,13 +70,12 @@
                 <input type="color" id="15_color" value="#88C0D3"/>
                 <p>25 points Pac-Dots :</p>
                 <input type="color" id="25_color" value="#51C251"/>
-                Time Settings:
-                <p>(Please Choose a number greater then 60)</p>
+                <p>Time Settings: (Please Choose a number greater then 60) </p><br>
                 <input id="time_setting" type="number" min="60" placeholder="invalid" value=60>
-                Monsters Settings:
-                <p>(Please choose 1-4 Monsters)</p>
+                <p>Monsters Settings: (Please choose 1-4 Monsters)</p> <br>
                 <input id="monster_setting" type="number" min=1 max=4 placeholder="invalid" value=1>
                 <br/>
+				<br>
                 <button type="button" onclick="random_settings()">Random Settings</button>
                 <hr>
                 <div align="center">
@@ -114,7 +111,7 @@
     </div>
 </div>
 <footer id="footer">
-    <p>2022 Pacman game website - By Elran Oren and Orel Fadlon. Contact: BestPacmanGame@sunActive.com</p>
+    2022 Pacman game website - By Elran Oren and Orel Fadlon. Contact: BestPacmanGame@sunActive.com
 </footer>
 
 <script>
