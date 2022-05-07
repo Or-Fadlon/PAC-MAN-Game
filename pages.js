@@ -25,18 +25,10 @@ $(document).ready(function () {
     $("#start_game_button").click(function () {
         if (!check_settings()) return;
         ShowDiv("#game_div");
-
-        // let up = $("#up_button").val();
-        // let right = $("#right_button").val();
-        // let down = $("#down_button").val();
-        // let left = $("#left_button").val();
-
-        //TODO: add register keys logic!
-        let up = 38;
-        let right = 39;
-        let down = 40;
-        let left = 37;
-
+        let up = assign_keyboard("up");
+        let down = assign_keyboard("down");
+        let left = assign_keyboard("left")
+        let right = assign_keyboard("right")
         let ball_5_color = $("#5_color").val();
         let ball_15_color = $("#15_color").val();
         let ball_25_color = $("#25_color").val();
@@ -65,3 +57,40 @@ $(document).ready(function () {
     };
     all_users = new Array(new_user);
 });
+
+
+function assign_keyboard(diraction){
+    if(diraction=="up"){
+        if($("#up_button").val()=='')
+            return 38;
+        else
+            return getKeyCode($("#up_button").val());
+    }
+    if(diraction=="down"){
+        if($("#down_button").val()=='')
+            return 40;
+        else
+            return getKeyCode($("#down_button").val());
+    }
+    if(diraction=="left"){
+        if($("#left_button").val()=='')
+            return 37;
+        else
+            return getKeyCode($("#left_button").val());
+    }
+    if(diraction=="right"){
+        if($("#right_button").val()=='')
+            return 39;
+        else
+            return getKeyCode($("#right_button").val());
+    }
+}
+
+
+function getKeyCode(char) {
+    var keyCode = char.charCodeAt(0);
+    if(keyCode > 90) {  // 90 is keyCode for 'z'
+      return keyCode - 32;
+    }
+    return keyCode;
+  }
