@@ -8,7 +8,7 @@ function GetWallLayout() {
         [wall, empty, empty, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, empty, empty, wall],//4
         [wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall],//5
         [wall, empty, empty, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, empty, empty, wall],//6
-        [wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, empty, empty, wall],//7
+        [wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall],//7
         [wall, empty, empty, empty, wall, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, wall, empty, empty, empty, wall],//8
         [wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall],//9
         [wall, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, wall],//10
@@ -18,7 +18,7 @@ function GetWallLayout() {
         [wall, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, wall],//14
         [wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall],//15
         [wall, empty, empty, empty, wall, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, wall, empty, empty, empty, wall],//16
-        [wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, empty, empty, wall],//17
+        [wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall],//17
         [wall, empty, empty, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, empty, empty, wall],//18
         [wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall],//19
         [wall, empty, empty, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, empty, empty, wall],//20
