@@ -1,13 +1,14 @@
 function GetWallLayout() {
-    const wall = 1;
     const empty = 0;
+    const wall = 1;
+    const hole = 2;
     return [
         [wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall, wall],//1
         [wall, empty, empty, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, empty, empty, wall],//2
         [wall, empty, wall, empty, wall, empty, wall, wall, wall, wall, wall, empty, wall, wall, wall, wall, wall, empty, wall, empty, wall, empty, wall],//3
         [wall, empty, empty, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, empty, empty, wall],//4
         [wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall],//5
-        [wall, empty, empty, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, empty, empty, wall],//6
+        [wall, empty, empty, empty, wall, empty, wall, empty, wall, empty, wall, hole, wall, empty, wall, empty, wall, empty, wall, empty, empty, empty, wall],//6
         [wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall],//7
         [wall, empty, empty, empty, wall, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, wall, empty, empty, empty, wall],//8
         [wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall],//9
@@ -19,7 +20,7 @@ function GetWallLayout() {
         [wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall],//15
         [wall, empty, empty, empty, wall, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, wall, empty, empty, empty, wall],//16
         [wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall],//17
-        [wall, empty, empty, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, wall, empty, empty, empty, wall],//18
+        [wall, empty, empty, empty, wall, empty, wall, empty, wall, empty, wall, hole, wall, empty, wall, empty, wall, empty, wall, empty, empty, empty, wall],//18
         [wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, empty, wall, empty, wall, wall, wall],//19
         [wall, empty, empty, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, empty, empty, wall],//20
         [wall, empty, wall, empty, wall, empty, wall, wall, wall, wall, wall, empty, wall, wall, wall, wall, wall, empty, wall, empty, wall, empty, wall],//21
