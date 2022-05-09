@@ -12,12 +12,18 @@ import {
 // consts
 const start_life = 5;
 const enemies_positions = [
-    [1, 1],
-    [21, 21],
-    [1, 21],
-    [21, 1],
-  ];
+  [1, 1],
+  [21, 21],
+  [1, 21],
+  [21, 1],
+];
 const keysDown = {};
+
+// Arrows
+let up_arrow;
+let right_arrow;
+let down_arrow;
+let left_arrow;
 
 // Game State Values
 let interval;
@@ -27,10 +33,6 @@ let life = start_life;
 let start_time;
 let time_elapsed;
 let game_time;
-let up_arrow;
-let right_arrow;
-let down_arrow;
-let left_arrow;
 
 // Game Objects
 let board;
@@ -40,55 +42,32 @@ let enemies = [];
 let eatables = [];
 let hud;
 
-window.StartGame = function (
-  canvas,
-  up,
-  right,
-  down,
-  left,
-  ball_5_color,
-  ball_15_color,
-  ball_25_color,
-  number_of_enemies,
-  number_of_food,
-  time
-) {
-  Start(
-    canvas,
-    up,
-    right,
-    down,
-    left,
-    ball_5_color,
-    ball_15_color,
-    ball_25_color,
-    number_of_enemies,
-    number_of_food,
-    time
-  );
+window.StartGame = function (canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time) {
+  Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time);
   // Start(canvas, 38, 39, 40, 37, "red", "green", "blue", 2, 50);
 };
 
-function Start(
-  canvas,
-  up,
-  right,
-  down,
-  left,
-  ball_5_color,
-  ball_15_color,
-  ball_25_color,
-  number_of_enemies,
-  number_of_food,
-  time
-) {
-//   alert("game started");
+function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time) {
+  //alert("game started");
+  board;
+  player;
+  walls = [];
+  enemies = [];
+  eatables = [];
+  hud;
+
+  // Game Variabels
   context = canvas.getContext("2d");
-  // arrows
   up_arrow = up;
   right_arrow = right;
   down_arrow = down;
   left_arrow = left;
+  life = start_life;
+  score = 0;
+  game_time = time;
+  start_time = new Date();
+  time_elapsed = 0;
+  ///
 
   // Game Objects
   board = GetWallLayout();
@@ -123,20 +102,24 @@ function Start(
     let position = RemoveAndReturnRandomItemFromArray(free_indexes);
     eatables.push(new Ball(position.x, position.y, ball_25_color, 25));
   }
-  hud = new HUD(board[0].length, board.length)
-  ///
-
-  // game vars
-  life = start_life;
-  score = 0;
-  game_time = time;
-  start_time = new Date();
-  time_elapsed = 0;
+  hud = new HUD(board[0].length, board.length);
   ///
 
   // key listeners
-  addEventListener("keydown",function (e) {keysDown[e.keyCode] = true;},false);
-  addEventListener("keyup",function (e) {keysDown[e.keyCode] = false;},false);
+  addEventListener(
+    "keydown",
+    function (e) {
+      keysDown[e.keyCode] = true;
+    },
+    false
+  );
+  addEventListener(
+    "keyup",
+    function (e) {
+      keysDown[e.keyCode] = false;
+    },
+    false
+  );
   ///
 
   interval = setInterval(GameLoop, 250);
@@ -152,11 +135,11 @@ function GameLoop() {
     if (life == 0) {
       window.alert("Loser!");
     } else if (time_elapsed >= game_time) {
-        if (score < 100) {
-            window.alert(`You are better then ${score} points!`);
-        } else {
-            window.alert("Winner!!!");
-        }
+      if (score < 100) {
+        window.alert(`You are better then ${score} points!`);
+      } else {
+        window.alert("Winner!!!");
+      }
     }
   }
 }
@@ -214,7 +197,7 @@ function Render() {
   });
   player.Render(context);
 
-  let time = (game_time - time_elapsed >= 0) ? game_time - time_elapsed : 0;
+  let time = game_time - time_elapsed >= 0 ? game_time - time_elapsed : 0;
   hud.Render(context, score, life, time);
 }
 

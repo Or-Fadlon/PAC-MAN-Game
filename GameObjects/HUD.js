@@ -20,15 +20,15 @@ class HUD extends GameObject {
         context.fillStyle = "black"; //color
         context.fill();
         
-        context.font = "30px Arial";
+        context.font = "30px 'Merienda One'";
         context.fillStyle = "yellow"; //color
         context.textAlign = "start";
-        context.fillText("Score: " + score, 15, center.y);
+        context.fillText("Score: " + score, 15, center.y + 5);
         context.textAlign = "center";
         let life_str = "❤";
-        context.fillText(life_str.repeat(life), center.x, center.y);
+        context.fillText(life_str.repeat(life), center.x, center.y + 5);
         context.textAlign = "end";
-        context.fillText("Time: " + time.toFixed(0), this.hub_width - 15, center.y);
+        context.fillText("Time: " + time.toFixed(0), this.hub_width - 15, center.y + 5);
     }
 }
 
