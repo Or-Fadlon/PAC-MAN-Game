@@ -6,6 +6,7 @@ class Moveable extends GameObject {
         this.board = board;
         this.velocity_x = 0;
         this.velocity_y = 0;
+        this.diraction = "right";
     }
 
     Tick() {

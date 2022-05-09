@@ -14,6 +14,12 @@ const enemies_positions = [
   [1, 21],
   [21, 1],
 ];
+const enemies_color = [
+  "#FF3100",
+  "#00FCFF",
+  "#FFA1CD",
+  "#FFCC00",
+];
 const keysDown = {};
 
 // Arrows
@@ -86,7 +92,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
   board[player_position.x][player_position.y] = 3;
   for (let i = 0; i < number_of_enemies; i++) {
     enemies.push(
-      new Enemy(enemies_positions[i][0], enemies_positions[i][1], board, player)
+      new Enemy(enemies_positions[i][0], enemies_positions[i][1], board, player, enemies_color[i])
     );
   }
   for (let i = 0; i < number_of_food * 0.6; i++) {
@@ -132,6 +138,7 @@ function GameLoop() {
     Render();
   } else {
     window.clearInterval(interval);
+    audio_player.Stop();
     if (life == 0) {
       window.alert("Loser!");
     } else if (time_elapsed >= game_time) {
