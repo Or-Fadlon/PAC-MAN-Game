@@ -3,11 +3,8 @@ import { Enemy } from "./GameObjects/Enemy.js";
 import { HUD } from "./GameObjects/HUD.js";
 import { Player } from "./GameObjects/Player.js";
 import { Wall } from "./GameObjects/Wall.js";
-import {
-  GetWallLayout,
-  GetFreeIndexesArray,
-  RemoveAndReturnRandomItemFromArray,
-} from "./OtherFunctions.js";
+import { GetWallLayout, GetFreeIndexesArray, RemoveAndReturnRandomItemFromArray } from "./OtherFunctions.js";
+import { PacmanSound } from "./audioPlayer.js";
 
 // consts
 const start_life = 5;
@@ -33,6 +30,7 @@ let life = start_life;
 let start_time;
 let time_elapsed;
 let game_time;
+let audio_player;
 
 // Game Objects
 let board;
@@ -67,6 +65,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
   game_time = time;
   start_time = new Date();
   time_elapsed = 0;
+  audio_player = new PacmanSound();
   ///
 
   // Game Objects
@@ -123,6 +122,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
   ///
 
   interval = setInterval(GameLoop, 250);
+  audio_player.Play("opening");
 }
 
 function GameLoop() {
@@ -204,6 +204,7 @@ function Render() {
 function Collision() {
   for (let i = 0; i < eatables.length; i++) {
     if (player.IsColide(eatables[i])) {
+      audio_player.Play("eat");
       score += eatables[i].points;
       eatables.splice(i, 1);
       break;
@@ -218,16 +219,19 @@ function Collision() {
   }
 
   function GhostCollisionHandler() {
-    let free_indexes = GetFreeIndexesArray(board);
-    let player_position = RemoveAndReturnRandomItemFromArray(free_indexes);
-    player.x = player_position.x;
-    player.y = player_position.y;
-    for (let i = 0; i < enemies.length; i++) {
-      enemies[i].x = enemies_positions[i][0];
-      enemies[i].y = enemies_positions[i][1];
-    }
-
     score -= 10;
     life -= 1;
+    if (life > 0) {
+      let free_indexes = GetFreeIndexesArray(board);
+      let player_position = RemoveAndReturnRandomItemFromArray(free_indexes);
+      player.x = player_position.x;
+      player.y = player_position.y;
+      for (let i = 0; i < enemies.length; i++) {
+        enemies[i].x = enemies_positions[i][0];
+        enemies[i].y = enemies_positions[i][1];
+      }
+    } else {
+      audio_player.Play("die");
+    }
   }
 }
