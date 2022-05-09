@@ -74,6 +74,7 @@ function check_username(username) {
 }
 
 function login() {
+
     var i;
     var is_user_found = false;
     var username = $("#login_username").val();
@@ -141,6 +142,25 @@ function check_settings() {
         return false;
     } else
         return true;
+}
+
+function go_to_settings(){
+    let arr = ["#welcome_div", "#register_div", "#login_div", "#settings_div", "#about_div", "#game_div"];
+        arr.forEach(element => {
+            if (element == "#settings_div") $(element).show();
+            else $(element).hide();
+        });
+    document.getElementById("up_button").value = "";
+    document.getElementById("down_button").value = "";
+    document.getElementById("left_button").value = "";
+    document.getElementById("right_button").value = "";
+    document.getElementById("pac_dots_num_settings").value = 50;
+    document.getElementById("5_color").value = "#FF726f";
+    document.getElementById("15_color").value = "#88C0D3";
+    document.getElementById("25_color").value = "#51C251";
+    document.getElementById("time_setting").value = 60;
+    document.getElementById("monster_setting").value = 1;
+
 }
 
 

@@ -20,7 +20,17 @@ $(document).ready(function () {
         let number_of_enemies = $("#monster_setting").val();
         let number_of_food = $("#pac_dots_num_settings").val();
         let time = $("#time_setting").val();
-
+        $("#player_name").text("Player: " + curr_user.username);
+        $("#up_game").text("Up: " + assign_keyboard_game("up"));
+        $("#down_game").text("Down: " + assign_keyboard_game("down"));
+        $("#left_game").text("Left: " + assign_keyboard_game("left"));
+        $("#right_game").text("Right: " + assign_keyboard_game("right"));
+        $("#num_dots").text("Number Of Dots: " + number_of_food);
+        $("#5_color_game").text(ball_5_color);
+        $("#15_color_game").text(ball_15_color);
+        $("#25_color_game").text(ball_25_color);
+        $("#num_ghosts_game").text("Number Of Ghosts: " + number_of_enemies);
+        $("#game_duration").text(time+ " Seconds");
         window.StartGame(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time);
     });
 
@@ -100,3 +110,31 @@ function getKeyCode(char) {
     }
     return keyCode;
   }
+
+
+  function assign_keyboard_game(diraction){
+    if(diraction=="up"){
+        if($("#up_button").val()=='')
+            return "Up Arrow";
+        else
+            return $("#up_button").val();
+    }
+    if(diraction=="down"){
+        if($("#down_button").val()=='')
+            return "Down Arrow";
+        else
+            return $("#down_button").val();
+    }
+    if(diraction=="left"){
+        if($("#left_button").val()=='')
+            return "Left Arrow";
+        else
+            return $("#left_button").val();
+    }
+    if(diraction=="right"){
+        if($("#right_button").val()=='')
+            return "Right Arrow";
+        else
+            return $("#right_button").val();
+    }
+}
