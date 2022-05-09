@@ -26,9 +26,9 @@ $(document).ready(function () {
         $("#left_game").text("Left: " + assign_keyboard_game("left"));
         $("#right_game").text("Right: " + assign_keyboard_game("right"));
         $("#num_dots").text("Number Of Dots: " + number_of_food);
-        $("#5_color_game").text(ball_5_color);
-        $("#15_color_game").text(ball_15_color);
-        $("#25_color_game").text(ball_25_color);
+        document.getElementById("5_color_game").value = $("#5_color").val();
+        document.getElementById("15_color_game").value = $("#15_color").val();
+        document.getElementById("25_color_game").value = $("#25_color").val();
         $("#num_ghosts_game").text("Number Of Ghosts: " + number_of_enemies);
         $("#game_duration").text(time+ " Seconds");
         window.StartGame(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time);
