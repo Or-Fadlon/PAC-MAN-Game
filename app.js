@@ -17,28 +17,28 @@ const enemies_positions = [
     [1, 21],
     [21, 1],
   ];
+const keysDown = {};
 
 // Game State Values
-var interval;
-var context;
-var score = 0;
-var life = start_life;
-var start_time;
-var time_elapsed;
-var game_time;
-const keysDown = {};
-var up_arrow;
-var right_arrow;
-var down_arrow;
-var left_arrow;
+let interval;
+let context;
+let score = 0;
+let life = start_life;
+let start_time;
+let time_elapsed;
+let game_time;
+let up_arrow;
+let right_arrow;
+let down_arrow;
+let left_arrow;
 
 // Game Objects
-var board;
-var player;
-var walls = [];
-var enemies = [];
-var eatables = [];
-var hud;
+let board;
+let player;
+let walls = [];
+let enemies = [];
+let eatables = [];
+let hud;
 
 window.StartGame = function (
   canvas,
@@ -214,7 +214,8 @@ function Render() {
   });
   player.Render(context);
 
-  hud.Render(context, score, life, game_time - time_elapsed);
+  let time = (game_time - time_elapsed >= 0) ? game_time - time_elapsed : 0;
+  hud.Render(context, score, life, time);
 }
 
 function Collision() {
