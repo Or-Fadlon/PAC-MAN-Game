@@ -21,7 +21,7 @@ $(document).ready(function () {
         let number_of_food = $("#pac_dots_num_settings").val();
         let time = $("#time_setting").val();
 
-        window.StartGame(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food);
+        window.StartGame(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time);
     });
 
     function ShowDiv(name) {
