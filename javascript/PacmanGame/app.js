@@ -1,6 +1,7 @@
 import { Ball } from "./GameObjects/Ball.js";
 import { Enemy } from "./GameObjects/Enemy.js";
 import { HUD } from "./GameObjects/HUD.js";
+import { MovingEatable } from "./GameObjects/MovingEatable.js";
 import { Player } from "./GameObjects/Player.js";
 import { Wall } from "./GameObjects/Wall.js";
 import { GetWallLayout, GetFreeIndexesArray, RemoveAndReturnRandomItemFromArray } from "./OtherFunctions.js";
@@ -95,19 +96,38 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
       new Enemy(enemies_positions[i][0], enemies_positions[i][1], board, player, enemies_color[i])
     );
   }
-  for (let i = 0; i < number_of_food * 0.6; i++) {
+  let number_of_5_balls = number_of_food * 0.6;
+  let number_of_15_balls = number_of_food * 0.3;
+  let number_of_25_balls = number_of_food * 0.1;
+  if (number_of_5_balls % 1 > number_of_15_balls % 1 && number_of_5_balls % 1 > number_of_25_balls % 1 ){
+    number_of_5_balls += 1
+  } else if (number_of_15_balls % 1 > number_of_5_balls % 1 && number_of_15_balls % 1 > number_of_25_balls % 1 ){
+    number_of_15_balls += 1
+  } else if (number_of_25_balls % 1 > number_of_5_balls % 1 && number_of_25_balls % 1 > number_of_15_balls % 1 ){
+    number_of_25_balls += 1
+  }
+  number_of_5_balls = Math.floor(number_of_5_balls);
+  number_of_15_balls = Math.floor(number_of_15_balls);
+  number_of_25_balls = Math.floor(number_of_25_balls);
+  for (let i = 0; i < number_of_5_balls; i++) {
     let position = RemoveAndReturnRandomItemFromArray(free_indexes);
     eatables.push(new Ball(position.x, position.y, ball_5_color, 5));
   }
-  for (let i = 0; i < number_of_food * 0.3; i++) {
+  for (let i = 0; i < number_of_15_balls; i++) {
     let position = RemoveAndReturnRandomItemFromArray(free_indexes);
     eatables.push(new Ball(position.x, position.y, ball_15_color, 15));
   }
-  for (let i = 0; i < number_of_food * 0.1; i++) {
+  for (let i = 0; i < number_of_25_balls; i++) {
     let position = RemoveAndReturnRandomItemFromArray(free_indexes);
     eatables.push(new Ball(position.x, position.y, ball_25_color, 25));
   }
+  let position = RemoveAndReturnRandomItemFromArray(free_indexes);
+  eatables.push(new MovingEatable(position.x, position.y, board));
   hud = new HUD(board[0].length, board.length);
+  console.log(number_of_5_balls);
+  console.log(number_of_15_balls);
+  console.log(number_of_25_balls);
+  console.log(eatables.length-1);
   ///
 
   // key listeners
@@ -141,7 +161,7 @@ function GameLoop() {
     audio_player.Stop();
     if (life == 0) {
       window.alert("Loser!");
-    } else if (time_elapsed >= game_time) {
+    } else if (time_elapsed >= game_time || eatables.length == 0) {
       if (score < 100) {
         window.alert(`You are better then ${score} points!`);
       } else {

@@ -27,38 +27,38 @@ class Player extends Moveable {
         context.fillStyle = "yellow"; //color
         context.fill();
 
-        context.beginPath();
-        if (this.diraction == "up") {
-            context.arc(center.x + width * 0.25, center.y - width * 0.083, width * 0.15, 0, 2 * Math.PI); // circle
-        } else if (this.diraction == "down") {
-            context.arc(center.x + width * 0.25, center.y - width * 0.083, width * 0.15, 0, 2 * Math.PI); // circle
-        } else if (this.diraction == "left") {
-            context.arc(center.x + width * 0.083, center.y - width * 0.25, width * 0.15, 0, 2 * Math.PI); // circle
-        } else if (this.diraction == "right") {
-            context.arc(center.x + width * 0.083, center.y - width * 0.25, width * 0.15, 0, 2 * Math.PI); // circle
-        }
-        context.fillStyle = "white"; //color
-        context.fill();
+        // context.beginPath();
+        // if (this.diraction == "up") {
+        //     context.arc(center.x + width * 0.25, center.y - width * 0.083, width * 0.15, 0, 2 * Math.PI); // circle
+        // } else if (this.diraction == "down") {
+        //     context.arc(center.x + width * 0.25, center.y - width * 0.083, width * 0.15, 0, 2 * Math.PI); // circle
+        // } else if (this.diraction == "left") {
+        //     context.arc(center.x + width * 0.083, center.y - width * 0.25, width * 0.15, 0, 2 * Math.PI); // circle
+        // } else if (this.diraction == "right") {
+        //     context.arc(center.x + width * 0.083, center.y - width * 0.25, width * 0.15, 0, 2 * Math.PI); // circle
+        // }
+        // context.fillStyle = "white"; //color
+        // context.fill();
 
-        context.beginPath();
-        if (this.diraction == "up") {
-            context.arc(center.x + width * 0.25, center.y - width * 0.083, width * 0.083, 0, 2 * Math.PI); // circle
-        } else if (this.diraction == "down") {
-            context.arc(center.x + width * 0.25, center.y - width * 0.083, width * 0.083, 0, 2 * Math.PI); // circle
-        } else if (this.diraction == "left") {
-            context.arc(center.x + width * 0.083, center.y - width * 0.25, width * 0.083, 0, 2 * Math.PI); // circle
-        } else if (this.diraction == "right") {
-            context.arc(center.x + width * 0.083, center.y - width * 0.25, width * 0.083, 0, 2 * Math.PI); // circle
-        }
-        context.fillStyle = "#0048FF"; //color
-        context.fill();
+        // context.beginPath();
+        // if (this.diraction == "up") {
+        //     context.arc(center.x + width * 0.25, center.y - width * 0.083, width * 0.083, 0, 2 * Math.PI); // circle
+        // } else if (this.diraction == "down") {
+        //     context.arc(center.x + width * 0.25, center.y - width * 0.083, width * 0.083, 0, 2 * Math.PI); // circle
+        // } else if (this.diraction == "left") {
+        //     context.arc(center.x + width * 0.083, center.y - width * 0.25, width * 0.083, 0, 2 * Math.PI); // circle
+        // } else if (this.diraction == "right") {
+        //     context.arc(center.x + width * 0.083, center.y - width * 0.25, width * 0.083, 0, 2 * Math.PI); // circle
+        // }
+        // context.fillStyle = "#0048FF"; //color
+        // context.fill();
 
         if (this.pac_mouth_open) {
             this.pac_mouth_open = false;
-            this.pac_mouth = 0.20;
+            this.pac_mouth = 0.30;
         } else {
             this.pac_mouth_open = true;
-            this.pac_mouth = 0;
+            this.pac_mouth = -0.25;
         }
     }
 
