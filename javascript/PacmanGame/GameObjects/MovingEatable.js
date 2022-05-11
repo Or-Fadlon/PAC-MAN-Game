@@ -5,6 +5,9 @@ class MovingEatable extends Moveable {
         super(x, y, walls);
         this.color = color;
         this.points = 50;
+        
+        this.image = new Image(30, 30); // Using optional size for image
+        this.image.src = "./resources/images/coin.gif";
     }
 
     Tick() {
@@ -25,20 +28,22 @@ class MovingEatable extends Moveable {
     }
 
     Render(context) {
-        let width = this.width;
-        let height = this.height;
-        let center = new Object();
-        center.x = this.x * width + 0.5 * width;
-        center.y = this.y * height + 0.5 * height;
-        context.beginPath();
-        context.rect(
-            center.x - 0.5 * width,
-            center.y - 0.5 * height,
-            width,
-            height
-        );
-        context.fillStyle = this.color; //color
-        context.fill();
+        context.drawImage(this.image, this.x * this.width, this.y * this.height, this.width, this.height);
+
+        // let width = this.width;
+        // let height = this.height;
+        // let center = new Object();
+        // center.x = this.x * width + 0.5 * width;
+        // center.y = this.y * height + 0.5 * height;
+        // context.beginPath();
+        // context.rect(
+        //     center.x - 0.5 * width,
+        //     center.y - 0.5 * height,
+        //     width,
+        //     height
+        // );
+        // context.fillStyle = this.color; //color
+        // context.fill();
     }
 }
 

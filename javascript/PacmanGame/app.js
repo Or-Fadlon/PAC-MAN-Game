@@ -1,4 +1,5 @@
 import { Ball } from "./GameObjects/Ball.js";
+import { EatableClock } from "./GameObjects/EatableClock.js";
 import { Enemy } from "./GameObjects/Enemy.js";
 import { HUD } from "./GameObjects/HUD.js";
 import { MovingEatable } from "./GameObjects/MovingEatable.js";
@@ -32,6 +33,7 @@ let left_arrow;
 // Game State Values
 let interval;
 let context;
+let free_indexes = [];
 let score = 0;
 let life = start_life;
 let start_time;
@@ -45,6 +47,8 @@ let player;
 let walls = [];
 let enemies = [];
 let eatables = [];
+let extra_eatables = [];
+let eatable_clocks = [];
 let hud;
 
 window.StartGame = function (canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time) {
@@ -87,7 +91,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
   for (let i = 0; i < number_of_enemies; i++) {
     board[enemies_positions[i][0]][enemies_positions[i][1]] = 2;
   }
-  let free_indexes = GetFreeIndexesArray(board);
+  free_indexes = GetFreeIndexesArray(board);
   let player_position = RemoveAndReturnRandomItemFromArray(free_indexes);
   player = new Player(player_position.x, player_position.y, walls);
   board[player_position.x][player_position.y] = 3;
@@ -122,7 +126,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
     eatables.push(new Ball(position.x, position.y, ball_25_color, 25));
   }
   let position = RemoveAndReturnRandomItemFromArray(free_indexes);
-  eatables.push(new MovingEatable(position.x, position.y, walls));
+  extra_eatables.push(new MovingEatable(position.x, position.y, walls));
   hud = new HUD(board[0].length, board.length);
   console.log(number_of_5_balls);
   console.log(number_of_15_balls);
@@ -152,7 +156,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
 }
 
 function GameLoop() {
-  if (life != 0 && time_elapsed < game_time) {
+  if (life != 0 && time_elapsed < game_time && eatables.length != 0) {
     Tick();
     Collision();
     Render();
@@ -177,6 +181,12 @@ function Tick() {
   HandleTime();
   eatables.forEach((eatable) => {
     eatable.Tick();
+  });
+  extra_eatables.forEach((extra_eatable) => {
+    extra_eatable.Tick();
+  });
+  eatable_clocks.forEach((clock) => {
+    clock.Tick();
   });
   enemies.forEach((enemy) => {
     enemy.Tick();
@@ -205,6 +215,12 @@ function HandleScore() {
 
 function HandleTime() {
   time_elapsed = (new Date() - start_time) / 1000;
+
+  let time = game_time - time_elapsed >= 0 ? game_time - time_elapsed : 0;
+  if (time <= 15 && eatable_clocks.length == 0) {
+    let position = RemoveAndReturnRandomItemFromArray(free_indexes);
+    eatable_clocks.push(new EatableClock(position.x, position.y));
+  }
 }
 
 function Render() {
@@ -217,6 +233,12 @@ function Render() {
   });
   eatables.forEach((eatable) => {
     eatable.Render(context);
+  });
+  extra_eatables.forEach((extra_eatable) => {
+    extra_eatable.Render(context);
+  });
+  eatable_clocks.forEach((clock) => {
+    clock.Render(context);
   });
   enemies.forEach((enemy) => {
     enemy.Render(context);
@@ -233,6 +255,22 @@ function Collision() {
       audio_player.Play("eat");
       score += eatables[i].points;
       eatables.splice(i, 1);
+      break;
+    }
+  }
+  for (let i = 0; i < extra_eatables.length; i++) {
+    if (player.IsCollide(extra_eatables[i])) {
+      audio_player.Play("eat");
+      score += extra_eatables[i].points;
+      extra_eatables.splice(i, 1);
+      break;
+    }
+  }
+  for (let i = 0; i < eatable_clocks.length; i++) {
+    if (player.IsCollide(eatable_clocks[i])) {
+      audio_player.Play("eat"); //TODO: power sound!
+      game_time += eatable_clocks[i].time;
+      eatable_clocks.splice(i, 1);
       break;
     }
   }
