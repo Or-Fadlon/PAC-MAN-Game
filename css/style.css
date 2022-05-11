@@ -294,3 +294,16 @@ u{
   font-family: 'Cherry Swash',cursive;
   font-size: 16px;
 }
+
+#names{
+  color: #ecf0f1;
+  font-family: 'Cherry Swash',cursive;
+  font-size: 14px;
+  line-height: 0.5 ;
+}
+
+#aboutpage{
+  color: #000000;
+  font-family: 'Cherry Swash',cursive;
+  font-size: 14px;
+}

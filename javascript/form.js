@@ -12,7 +12,7 @@ function check_details() {
     check_empty_fields_func(username, password, repeat_password, first_name, last_name, email, date);
     if(!is_valid)
         return;
-    general_check(password, /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,}$/,"This password is invalid:" + "\n" + "-Password must be at least 8 characters" + "\n" +
+    general_check(password, /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,}$/,"This password is invalid:" + "\n" + "-Password must be at least 6 characters" + "\n" +
     "-Password must contain both letters and numbers");
     check_repeat_password(password, repeat_password);
     general_check(first_name, /^[a-zA-Z]*$/, "your firstname is invalid - you can use only alphabetic letters");

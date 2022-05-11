@@ -9,11 +9,18 @@
     <script type="module" src="./javascript/PacmanGame/app.js"></script>
     <script type="text/javascript" src="./javascript/form.js"></script>
     <script type="text/javascript" src="./javascript/pages.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-2021.css">
 </head>
 
 <body>
 <header id="Logo_header">
     <img src="./resources/images/pacman_logo.png" width="40%"/>
+    <br>
+    <br>
+    <div id = names>Elran Oren(205965908) & Orel Fadlon(316394717)</div>
+</header>
+    
 </header>
 <nav>
 	<a class="active" href="#login" id="login_label">Login</a>
@@ -95,12 +102,11 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span onclick="closeModal()" class="close">&times;</span>
-            <p>
-                <font color="black">
-                    Or Fadlon & Elran Oren!!!!!!!!!!!!!!
-
-                </font>
-            </p>
+            <div id = "aboutpage">
+                    About Page:<br /><br />
+                    This  Website Game developed by Elran Oren (205965908) & Orel Fadlon (316394717). <br />
+            </div>
+                
         </div>
     </div>
     <div id="game_div" hidden>
@@ -154,8 +160,15 @@
         </div>  
     </div>
 </div>
-<footer id="footer">
-    2022 Pacman game website - By Elran Oren and Orel Fadlon. Contact: BestPacmanGame@sunActive.com
+<footer id = "footer" class="w3-bar w3-white  w3-dark-gray w3-bottom  w3-center  ">
+    <a>Elran Oren:</a>
+    <a href="https://www.facebook.com/moshe.biran.7/?viewas=100000686899395"> <i class="fa fa-facebook-official w3-hover-opacity" aria-hidden="true"></i></a>
+    <a href="https://www.instagram.com/moshebiran/"><i class="fa fa-instagram w3-hover-opacity" aria-hidden="true"></i></a>
+    <a href="https://www.linkedin.com/in/moshe-biran/"><i class="fa fa-linkedin w3-hover-opacity" aria-hidden="true"></i></a>
+    <a>and Orel Fadlon:</a>
+    <a href="https://www.facebook.com/daniel.dinshtein"> <i class="fa fa-facebook-official w3-hover-opacity" aria-hidden="true"></i></a>
+    <a href="https://www.instagram.com/daniel_dinshtein/"><i class="fa fa-instagram w3-hover-opacity" aria-hidden="true"></i></a>
+    <a href="https://www.linkedin.com/in/daniel-dinshtein/"><i class="fa fa-linkedin w3-hover-opacity" aria-hidden="true"></i></a>
 </footer>
 
 <script>
