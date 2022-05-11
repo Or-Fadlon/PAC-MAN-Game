@@ -1,9 +1,9 @@
 import {GameObject} from "./GameObject.js";
 
 class Moveable extends GameObject {
-    constructor(x, y, board) {
+    constructor(x, y, walls) {
         super(x, y);
-        this.board = board;
+        this.walls = walls;
         this.velocity_x = 0;
         this.velocity_y = 0;
         this.diraction = "right";
@@ -11,12 +11,23 @@ class Moveable extends GameObject {
     }
 
     Tick() {
-        if (this.velocity_x != 0 && this.board[this.y][this.x + this.velocity_x] != 1) {
-            this.x = this.x + this.velocity_x;
-        } else if (this.velocity_y != 0 && this.board[this.y + this.velocity_y][this.x] != 1) {
-            this.y = this.y + this.velocity_y;
-        } else {
-            this.stop();
+        let old_x = this.x;
+        let old_y = this.y;
+        this.x = this.x + this.velocity_x;
+        this.y = this.y + this.velocity_y;
+        
+        let can_move = true;
+        for (let i = 0; i < this.walls.length; i++) {
+            if (this.IsCollide(this.walls[i])) {
+                can_move = false;
+                break;
+            }            
+        }
+
+        if (!can_move) {
+            this.x = old_x;
+            this.y = old_y;
+            this.Stop()
         }
 
         if (this.x < 0) {
@@ -27,27 +38,31 @@ class Moveable extends GameObject {
         }
     }
 
-    up() {
+    Up() {
+        this.Stop();
         this.velocity_y = -this.speed;
         this.diraction = "up";
     }
 
-    right() {
+    Right() {
+        this.Stop();
         this.velocity_x = this.speed;
         this.diraction = "right";
     }
 
-    down() {
+    Down() {
+        this.Stop();
         this.velocity_y = this.speed;
         this.diraction = "down";
     }
 
-    left() {
+    Left() {
+        this.Stop();
         this.velocity_x = -this.speed;
         this.diraction = "left";
     }
 
-    stop() {
+    Stop() {
         this.velocity_x = 0;
         this.velocity_y = 0;
     }

@@ -89,11 +89,11 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
   }
   let free_indexes = GetFreeIndexesArray(board);
   let player_position = RemoveAndReturnRandomItemFromArray(free_indexes);
-  player = new Player(player_position.x, player_position.y, board);
+  player = new Player(player_position.x, player_position.y, walls);
   board[player_position.x][player_position.y] = 3;
   for (let i = 0; i < number_of_enemies; i++) {
     enemies.push(
-      new Enemy(enemies_positions[i][0], enemies_positions[i][1], board, player, enemies_color[i])
+      new Enemy(enemies_positions[i][0], enemies_positions[i][1], walls, player, board, enemies_color[i])
     );
   }
   let number_of_5_balls = number_of_food * 0.6;
@@ -122,7 +122,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
     eatables.push(new Ball(position.x, position.y, ball_25_color, 25));
   }
   let position = RemoveAndReturnRandomItemFromArray(free_indexes);
-  eatables.push(new MovingEatable(position.x, position.y, board));
+  eatables.push(new MovingEatable(position.x, position.y, walls));
   hud = new HUD(board[0].length, board.length);
   console.log(number_of_5_balls);
   console.log(number_of_15_balls);
@@ -185,18 +185,17 @@ function Tick() {
 }
 
 function HandlePlayerMovement() {
-  player.stop();
   if (keysDown[up_arrow]) {
-    player.up();
+    player.Up();
   }
   if (keysDown[right_arrow]) {
-    player.right();
+    player.Right();
   }
   if (keysDown[down_arrow]) {
-    player.down();
+    player.Down();
   }
   if (keysDown[left_arrow]) {
-    player.left();
+    player.Left();
   }
 }
 
@@ -230,7 +229,7 @@ function Render() {
 
 function Collision() {
   for (let i = 0; i < eatables.length; i++) {
-    if (player.IsColide(eatables[i])) {
+    if (player.IsCollide(eatables[i])) {
       audio_player.Play("eat");
       score += eatables[i].points;
       eatables.splice(i, 1);
@@ -239,7 +238,7 @@ function Collision() {
   }
 
   for (let i = 0; i < enemies.length; i++) {
-    if (player.IsColide(enemies[i])) {
+    if (player.IsCollide(enemies[i])) {
       GhostCollisionHandler();
       break;
     }

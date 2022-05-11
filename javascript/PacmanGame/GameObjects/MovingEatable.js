@@ -1,9 +1,8 @@
 import {Moveable} from "./Moveable.js";
 
 class MovingEatable extends Moveable {
-    constructor(x, y, board, color = "red") {
-        super(x, y);
-        this.board = board;
+    constructor(x, y, walls, color = "red") {
+        super(x, y, walls);
         this.color = color;
         this.points = 50;
     }
@@ -12,13 +11,13 @@ class MovingEatable extends Moveable {
         if (this.velocity_x == 0 && this.velocity_y ==0) {
             let move = Math.floor(Math.random() * 4);
             if (move == 0) {
-                this.up();
+                this.Up();
             } else if (move == 1) {
-                this.right();
+                this.Right();
             } else if (move == 2) {
-                this.down();
+                this.Down();
             } else if (move == 3) {
-                this.left();
+                this.Left();
             }
         }
 

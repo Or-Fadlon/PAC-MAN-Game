@@ -1,8 +1,8 @@
 import {Moveable} from "./Moveable.js";
 
 class Player extends Moveable {
-    constructor(x, y, board) {
-        super(x, y, board);
+    constructor(x, y, walls) {
+        super(x, y, walls);
         this.pac_mouth_open = true;
         this.pac_mouth = 0;
     }
@@ -62,9 +62,9 @@ class Player extends Moveable {
         }
     }
 
-    IsColide(other) {
-        return other.x == this.x && other.y == this.y;
-    }
+    // IsColide(other) {
+    //     return other.x == this.x && other.y == this.y;
+    // }
 }
 
 export {Player};

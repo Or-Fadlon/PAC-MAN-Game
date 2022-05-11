@@ -1,8 +1,8 @@
 import {Moveable} from "./Moveable.js";
 
 class Enemy extends Moveable {
-    constructor(x, y, board, player, color = "red") {
-        super(x, y);
+    constructor(x, y, walls, player, board, color = "red") {
+        super(x, y, walls);
         this.board = board;
         this.player = player;
         this.color = color;
@@ -10,15 +10,15 @@ class Enemy extends Moveable {
     }
 
     Tick() {
-        this.stop();
-        if (this.player.y < this.y && this.board[this.y - 1][this.x] != 1) {
-            this.up();
-        } else if (this.player.x > this.x && this.board[this.y][this.x + 1] != 1) {
-            this.right();
-        } else if (this.player.y > this.y && this.board[this.y + 1][this.x] != 1) {
-            this.down()
-        } else if (this.player.x < this.x && this.board[this.y][this.x - 1] != 1) {
-            this.left()
+        this.Stop();
+        if (this.player.y < this.y) {
+            this.Up();
+        } else if (this.player.x > this.x) {
+            this.Right();
+        } else if (this.player.y > this.y) {
+            this.Down()
+        } else if (this.player.x < this.x) {
+            this.Left()
         }
 
         super.Tick();
