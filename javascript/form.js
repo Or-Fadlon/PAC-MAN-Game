@@ -121,7 +121,7 @@ function login() {
 }
 
 function random_num(min, max) {
-    return Math.floor(Math.random() * (max - min) + min);
+    return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 function get_random_color() {
@@ -134,12 +134,12 @@ function get_random_color() {
 }
 
 function random_settings() {
-    document.getElementById("pac_dots_num_settings").value = random_num(50, 91);
+    document.getElementById("pac_dots_num_settings").value = random_num(50, 90);
     document.getElementById("5_color").value = get_random_color();
     document.getElementById("15_color").value = get_random_color();
     document.getElementById("25_color").value = get_random_color();
     document.getElementById("time_setting").value = Math.floor(Math.random() * 100 + 61);
-    document.getElementById("monster_setting").value = random_num(1, 5);
+    document.getElementById("monster_setting").value = random_num(1, 4);
 }
 
 
