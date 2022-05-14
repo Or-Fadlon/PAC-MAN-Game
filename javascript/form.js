@@ -167,6 +167,8 @@ function go_to_settings(){
             if (element == "#settings_div") $(element).show();
             else $(element).hide();
         });
+    $(paceman_img).show();
+    $(names).show();
     document.getElementById("up_button").value = "";
     document.getElementById("down_button").value = "";
     document.getElementById("left_button").value = "";
