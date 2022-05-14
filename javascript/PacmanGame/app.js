@@ -1,5 +1,6 @@
 import { Ball } from "./GameObjects/Ball.js";
 import { EatableClock } from "./GameObjects/EatableClock.js";
+import { EatablePill } from "./GameObjects/EatablePill.js";
 import { Enemy } from "./GameObjects/Enemy.js";
 import { HUD } from "./GameObjects/HUD.js";
 import { MovingEatable } from "./GameObjects/MovingEatable.js";
@@ -24,6 +25,7 @@ const enemies_color = [
 ];
 const keysDown = {};
 const audio_player = new PacmanSound();
+const life_spawn_chench = 1;
 
 // Arrows
 let up_arrow;
@@ -128,8 +130,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
     let position = RemoveAndReturnRandomItemFromArray(free_indexes);
     eatables.push(new Ball(position.x, position.y, ball_25_color, 25));
   }
-  let position = RemoveAndReturnRandomItemFromArray(free_indexes);
-  extra_eatables.push(new MovingEatable(position.x, position.y, walls));
+  extra_eatables.push(new MovingEatable(11, 11, walls));
   hud = new HUD(board[0].length, board.length);
   console.log(number_of_5_balls);
   console.log(number_of_15_balls);
@@ -263,15 +264,19 @@ function Collision() {
   }
   for (let i = 0; i < extra_eatables.length; i++) {
     if (player.IsCollide(extra_eatables[i])) {
-      audio_player.Play("eat");
-      score += extra_eatables[i].points;
+      audio_player.Play("eat_power_up");
+      if (extra_eatables[i].eatable_type == "pill") {
+        life += extra_eatables[i].life;
+      } else if (extra_eatables[i].eatable_type == "moving") {
+        score += extra_eatables[i].points;
+      }
       extra_eatables.splice(i, 1);
       break;
     }
   }
   for (let i = 0; i < eatable_clocks.length; i++) {
     if (player.IsCollide(eatable_clocks[i])) {
-      audio_player.Play("eat"); //TODO: power sound!
+      audio_player.Play("eat_clock");
       game_time += eatable_clocks[i].time;
       eatable_clocks.splice(i, 1);
       break;
@@ -296,6 +301,10 @@ function Collision() {
       for (let i = 0; i < enemies.length; i++) {
         enemies[i].x = enemies_positions[i][0];
         enemies[i].y = enemies_positions[i][1];
+      }
+      if (Math.floor(Math.random() * life_spawn_chench) == 0) {
+        let position = RemoveAndReturnRandomItemFromArray(free_indexes);
+        extra_eatables.push(new EatablePill(position.x, position.y));
       }
     } else {
       audio_player.Play("die");

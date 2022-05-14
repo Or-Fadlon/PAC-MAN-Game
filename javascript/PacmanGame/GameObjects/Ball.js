@@ -2,7 +2,7 @@ import {Eatable} from "./Eatable.js";
 
 class Ball extends Eatable {
     constructor(x, y, color, points) {
-        super(x, y);
+        super(x, y, "ball");
         this.color = color;
         this.points = points;
     }

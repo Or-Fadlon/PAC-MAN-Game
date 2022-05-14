@@ -5,6 +5,8 @@ class PacmanSound {
       siren: "./resources/audios/siren.ogg",
       die: "./resources/audios/die.ogg",
       eat: "./resources/audios/eating.short.ogg",
+      eat_clock: "./resources/audios/eat_clock.ogg",
+      eat_power_up: "./resources/audios/eat_life.ogg",
     };
     this.loopers = [];
     this.mute = false;
