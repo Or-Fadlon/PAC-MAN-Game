@@ -11,6 +11,9 @@ class Moveable extends GameObject {
     }
 
     Tick() {
+        this.prev_x = this.x;
+        this.prev_y = this.y;
+
         let old_x = this.x;
         let old_y = this.y;
         this.x = this.x + this.velocity_x;

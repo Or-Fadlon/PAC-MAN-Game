@@ -13,14 +13,18 @@ class Enemy extends Moveable {
         this.Stop();
         let path = this.BFS(this.x, this.y, this.player.x, this.player.y, this.board);
         let next_state = path[0];
-        if (this.x == next_state.x && this.y - 1 == next_state.y) {
-            this.Up();
-        } else if (this.x + 1 == next_state.x && this.y == next_state.y) {
-            this.Right();
-        } else if (this.x == next_state.x && this.y + 1 == next_state.y) {
-            this.Down()
-        } else if (this.x - 1 == next_state.x && this.y == next_state.y) {
-            this.Left()
+        if (next_state != null) {
+            if (this.x == next_state.x && this.y - 1 == next_state.y) {
+                this.Up();
+            } else if (this.x + 1 == next_state.x && this.y == next_state.y) {
+                this.Right();
+            } else if (this.x == next_state.x && this.y + 1 == next_state.y) {
+                this.Down()
+            } else if (this.x - 1 == next_state.x && this.y == next_state.y) {
+                this.Left()
+            }
+        } else {
+            console.log("blablabla"); //TODO: remove if not cousing an issue
         }
 
         super.Tick();

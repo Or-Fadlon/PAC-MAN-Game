@@ -30,7 +30,7 @@ class PacmanSound {
   }
 
   MuteToggle() {
-    this.mute = !this.Mute;
+    this.mute = !this.mute;
     if (this.mute) {
       this.Stop();
     }
