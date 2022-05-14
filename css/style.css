@@ -115,7 +115,6 @@ nav {
     background: #2c3e50;
   }
   h1 {
-    text-align: center;
     margin: 40px 0 40px;
     text-align: center;
     font-size: 30px;
@@ -300,4 +299,17 @@ label{
  
 .buttons{
   display: inline;
+}
+
+.container3 {
+  display: flex; 
+  flex-direction: "row"; 
+  justify-content:space-around;
+}
+
+span.a {
+  display: inline; /* the default for span */
+  width: 100px;
+  height: 100px;
+  padding: 5px;
 }
