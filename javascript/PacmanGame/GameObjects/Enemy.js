@@ -66,25 +66,25 @@ class Enemy extends Moveable {
     generateAllNeighbors(state, board) {
         //TODO: handle portal
         let successors = new Array();
-        if (state.x > 0 && board[state.y][state.x - 1] == 0){
+        if (state.x > 0 && board[state.y][state.x - 1] != 1){
             let up_state = new Object;
             up_state.x = state.x - 1;
             up_state.y = state.y;
             successors.push(up_state);
         }
-        if(state.x < this.board[0].length - 1 && board[state.y][state.x + 1] == 0){
+        if(state.x < this.board[0].length - 1 && board[state.y][state.x + 1] != 1){
             let down_state = new Object;
             down_state.x = state.x + 1;
             down_state.y = state.y;
             successors.push(down_state);
         }
-        if(state.y > 0 && board[state.y - 1][state.x] == 0){
+        if(state.y > 0 && board[state.y - 1][state.x] != 1){
             let left_state = new Object;
             left_state.x = state.x;
             left_state.y = state.y - 1;
             successors.push(left_state);
         }
-        if(state.y < this.board.length - 1 && board[state.y + 1][state.x] == 0){
+        if(state.y < this.board.length - 1 && board[state.y + 1][state.x] != 1){
             let right_state = new Object;
             right_state.x = state.x;
             right_state.y = state.y + 1;
