@@ -6,8 +6,9 @@ import { HUD } from "./GameObjects/HUD.js";
 import { MovingEatable } from "./GameObjects/MovingEatable.js";
 import { Player } from "./GameObjects/Player.js";
 import { Wall } from "./GameObjects/Wall.js";
-import { GetWallLayout, GetFreeIndexesArray, RemoveAndReturnRandomItemFromArray } from "./OtherFunctions.js";
 import { PacmanSound } from "./audioPlayer.js";
+import { GamePopUp } from "./GameObjects/GamePopUp.js";
+import { GetWallLayout, GetFreeIndexesArray, RemoveAndReturnRandomItemFromArray } from "./OtherFunctions.js";
 
 // consts
 const start_life = 5;
@@ -25,7 +26,7 @@ const enemies_color = [
 ];
 const keysDown = {};
 const audio_player = new PacmanSound();
-const life_spawn_chench = 1;
+const life_spawn_chench = 2;
 
 // Arrows
 let up_arrow;
@@ -63,13 +64,20 @@ window.GameMuteToggle = function () {
 };
 
 function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time) {
+  if (interval != null) {
+    Stop();
+  }
+
+
   //alert("game started");
-  board;
-  player;
+  board = [];
+  player = null;
   walls = [];
   enemies = [];
   eatables = [];
-  hud;
+  extra_eatables = [];
+  eatable_clocks = [];
+  hud = null;
 
   // Game Variabels
   context = canvas.getContext("2d");
@@ -159,23 +167,29 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
   audio_player.Play("opening");
 }
 
+function Stop() {
+  audio_player.Stop();
+  window.clearInterval(interval);
+}
+
 function GameLoop() {
   if (life != 0 && time_elapsed < game_time && eatables.length != 0) {
     Tick();
     Collision();
     Render();
   } else {
-    window.clearInterval(interval);
-    audio_player.Stop();
+    Stop();
+    let message = "default!";
     if (life == 0) {
-      window.alert("Loser!");
+      message = "Loser!";
     } else if (time_elapsed >= game_time || eatables.length == 0) {
       if (score < 100) {
-        window.alert(`You are better then ${score} points!`);
+        message = `You are better then ${score} points!`;
       } else {
-        window.alert("Winner!!!");
+        message = "Winner!!!";
       }
     }
+    new GamePopUp(message).Render(context);
   }
 }
 
