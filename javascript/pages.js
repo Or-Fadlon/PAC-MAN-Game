@@ -5,6 +5,7 @@ $(document).ready(function () {
     $("#welcome_label").click(() => ShowDiv("#welcome_div"));
     $("#register_button").click(() => ShowDiv("#register_div"));
     $("#register_label").click(() => ShowDiv("#register_div"));
+    $("#play_label").click(() => ShowDiv("#settings_div"));
     $("#login_label").click(() => ShowDiv("#login_div"));
     $("#login_button").click(() => ShowDiv("#login_div"));
     $("#start_game_button").click(function () {
@@ -60,6 +61,10 @@ $(document).ready(function () {
             document.getElementById("F_lastName").value = "";
             document.getElementById("F_email").value = "";
             document.getElementById("F_date").value = "";
+        }
+        if(name=="#welcome_div"){
+            $("#one").show();
+            $("#two").hide(); 
         }
     }
 
