@@ -36,14 +36,13 @@
   cursor: pointer;
 }
 
-/* #footer {
-  bottom: 20px;
+#footer {
   width: 100%;
   text-align: center;
   color: #ecf0f1;
   font-family: 'Cherry Swash',cursive;
   font-size: 16px;
-} */
+}
 
 #Logo_header {
   padding: 0px;
@@ -115,6 +114,7 @@ nav {
     background: #2c3e50;
   }
   h1 {
+
     margin: 40px 0 40px;
     text-align: center;
     font-size: 30px;
@@ -220,7 +220,7 @@ nav {
     outline:none;
     background: linear-gradient(to left top, #000, #22132e) fixed;
     border-radius: 10px;
-    border: 2px solid rgba(255,255,255,0.2);
+    border: 2px solid rgba(243, 238, 238, 0.2);
     color: rgba(255,255,255,0.8);
     transition: all 0.5s;
   }
@@ -312,4 +312,8 @@ span.a {
   width: 100px;
   height: 100px;
   padding: 5px;
+}
+
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
 }
