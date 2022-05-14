@@ -195,7 +195,6 @@ function GameLoop() {
 
 function Tick() {
   HandlePlayerMovement();
-  HandleScore();
   HandleTime();
   eatables.forEach((eatable) => {
     eatable.Tick();
@@ -225,10 +224,6 @@ function HandlePlayerMovement() {
   if (keysDown[left_arrow]) {
     player.Left();
   }
-}
-
-function HandleScore() {
-  // TODO: add logic
 }
 
 function HandleTime() {
