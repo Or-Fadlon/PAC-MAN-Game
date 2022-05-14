@@ -3,9 +3,7 @@ import {GameObject} from "./GameObject.js";
 class HUD extends GameObject {
     constructor(canvas_height, canvas_width) {
         super(0, canvas_height);
-        this.canvas_width = canvas_width;
-        this.canvas_height = canvas_height;
-        this.hub_width = this.canvas_width * this.width;
+        this.hub_width = canvas_width * this.width;
         this.hub_height = 2 * this.height;
     }
 
