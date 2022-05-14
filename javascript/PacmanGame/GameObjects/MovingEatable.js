@@ -3,6 +3,7 @@ import {Moveable} from "./Moveable.js";
 class MovingEatable extends Moveable {
     constructor(x, y, walls, color = "red") {
         super(x, y, walls);
+        this.eatable_type = "moving";
         this.color = color;
         this.points = 50;
         

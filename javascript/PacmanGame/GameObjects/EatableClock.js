@@ -1,9 +1,9 @@
 import { Eatable } from "./Eatable.js";
 class EatableClock extends Eatable {
     constructor(x, y) {
-        super(x, y);
+        super(x, y, "clock");
         this.time = 10;
-        this.image = new Image(30, 30); // Using optional size for image
+        this.image = new Image(this.width, this.height); // Using optional size for image
         this.image.src = "./resources/images/clock.png";
     }
 

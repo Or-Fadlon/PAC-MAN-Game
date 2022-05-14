@@ -1,5 +1,6 @@
 import { Ball } from "./GameObjects/Ball.js";
 import { EatableClock } from "./GameObjects/EatableClock.js";
+import { EatablePill } from "./GameObjects/EatablePill.js";
 import { Enemy } from "./GameObjects/Enemy.js";
 import { HUD } from "./GameObjects/HUD.js";
 import { MovingEatable } from "./GameObjects/MovingEatable.js";
@@ -24,6 +25,7 @@ const enemies_color = [
 ];
 const keysDown = {};
 const audio_player = new PacmanSound();
+const life_spawn_chench = 1;
 
 // Arrows
 let up_arrow;
@@ -264,7 +266,11 @@ function Collision() {
   for (let i = 0; i < extra_eatables.length; i++) {
     if (player.IsCollide(extra_eatables[i])) {
       audio_player.Play("eat_power_up");
-      score += extra_eatables[i].points;
+      if (extra_eatables[i].eatable_type == "pill") {
+        life += extra_eatables[i].life;
+      } else if (extra_eatables[i].eatable_type == "moving") {
+        score += extra_eatables[i].points;
+      }
       extra_eatables.splice(i, 1);
       break;
     }
@@ -296,6 +302,10 @@ function Collision() {
       for (let i = 0; i < enemies.length; i++) {
         enemies[i].x = enemies_positions[i][0];
         enemies[i].y = enemies_positions[i][1];
+      }
+      if (Math.floor(Math.random() * life_spawn_chench) == 0) {
+        let position = RemoveAndReturnRandomItemFromArray(free_indexes);
+        extra_eatables.push(new EatablePill(position.x, position.y));
       }
     } else {
       audio_player.Play("die");
