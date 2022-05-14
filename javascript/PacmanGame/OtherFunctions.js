@@ -13,9 +13,9 @@ function GetWallLayout() {
         [wall, empty, empty, empty, wall, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, wall, empty, empty, empty, wall],//8
         [wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall],//9
         [wall, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, wall],//10
-        [wall, empty, wall, wall, wall, wall, wall, empty, wall, wall, wall, empty, wall, wall, wall, empty, wall, wall, wall, wall, wall, empty, wall],//11
+        [wall, empty, wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall, empty, wall],//11
         [empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty],//12
-        [wall, empty, wall, wall, wall, wall, wall, empty, wall, wall, wall, empty, wall, wall, wall, empty, wall, wall, wall, wall, wall, empty, wall],//13
+        [wall, empty, wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall, empty, wall],//13
         [wall, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, empty, empty, empty, empty, wall],//14
         [wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall, wall, wall, empty, wall, empty, wall, wall, wall, wall, wall],//15
         [wall, empty, empty, empty, wall, empty, wall, empty, empty, empty, empty, empty, empty, empty, empty, empty, wall, empty, wall, empty, empty, empty, wall],//16
