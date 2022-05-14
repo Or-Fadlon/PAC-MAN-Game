@@ -43,6 +43,7 @@ $(document).ready(function () {
     });
 
     function ShowDiv(name) {
+        document.getElementById("content").style.display = "none";
         let arr = ["#welcome_div", "#register_div", "#login_div", "#settings_div", "#about_div", "#game_div"];
         arr.forEach(element => {
             if (element == name) $(element).show();
@@ -51,11 +52,9 @@ $(document).ready(function () {
         if(name!= "#game_div"){
             $(function() {
                 $("header").show();
-                $("content").show()
             });
             $(paceman_img).show();
             $(names).show();
-            
             document.getElementById("login_username").value = "";
             document.getElementById("login_pass").value = "";
             document.getElementById("up_button").value = "";
@@ -79,6 +78,7 @@ $(document).ready(function () {
         if(name=="#welcome_div"){
             $("#one").show();
             $("#two").hide(); 
+            document.getElementById("content").style.display = "";
         }
     }
 
