@@ -169,6 +169,10 @@ function go_to_settings(){
         });
     $(paceman_img).show();
     $(names).show();
+    $(function() {
+        $("header").show();
+        $("content").show()
+    });
     document.getElementById("up_button").value = "";
     document.getElementById("down_button").value = "";
     document.getElementById("left_button").value = "";

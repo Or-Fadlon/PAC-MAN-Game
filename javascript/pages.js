@@ -13,6 +13,11 @@ $(document).ready(function () {
         ShowDiv("#game_div");
         $(paceman_img).hide();
         $(names).hide();
+        $(function() {
+            $("header").hide();
+            $("content").hide();
+        });
+        
         let up = assign_keyboard("up");
         let down = assign_keyboard("down");
         let left = assign_keyboard("left")
@@ -44,8 +49,13 @@ $(document).ready(function () {
             else $(element).hide();
         });
         if(name!= "#game_div"){
+            $(function() {
+                $("header").show();
+                $("content").show()
+            });
             $(paceman_img).show();
             $(names).show();
+            
             document.getElementById("login_username").value = "";
             document.getElementById("login_pass").value = "";
             document.getElementById("up_button").value = "";
