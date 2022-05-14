@@ -28,7 +28,7 @@ $(document).ready(function () {
         let number_of_enemies = $("#monster_setting").val();
         let number_of_food = $("#pac_dots_num_settings").val();
         let time = $("#time_setting").val();
-        $("#player_name").text("Player: " + curr_user.username);
+        $("#player_name").text(curr_user.username);
         $("#up_game").text("Up: " + assign_keyboard_game("up"));
         $("#down_game").text("Down: " + assign_keyboard_game("down"));
         $("#left_game").text("Left: " + assign_keyboard_game("left"));

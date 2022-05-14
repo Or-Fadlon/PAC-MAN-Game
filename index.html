@@ -162,8 +162,11 @@
         </div>
     </div>
     <div id="game_div" hidden>
+        <div id="pacman_player_css">
+            <img src="resources/images/pacman_player_2.png" style="width:40px;height:40px;">
+        </div>
         <div id="player_css">
-            <p id="player_name"></p>
+            <div id="player_name">
         </div>
         <div class="container2">
             <div></div> <!-- element 1 : empty -->
@@ -216,6 +219,12 @@
                 <br>
                 <br>
                 <button class = "bn54" onclick="go_to_settings()" type="button" class="btn">New Game</button> 
+                <br>
+                <p><u>Music:</u></p>
+                <label class="switch">
+                <input type="checkbox" id="togBtn">
+                <div class="slider round"></div>
+                </label>
             </div>
             <div>
 
