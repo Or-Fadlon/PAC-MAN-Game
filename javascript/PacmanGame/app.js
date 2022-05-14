@@ -11,6 +11,7 @@ import { GamePopUp } from "./GameObjects/GamePopUp.js";
 import { GetWallLayout, GetFreeIndexesArray, RemoveAndReturnRandomItemFromArray } from "./OtherFunctions.js";
 
 // consts
+const interval_time = 150;
 const start_life = 5;
 const enemies_positions = [
   [1, 1],
@@ -64,6 +65,13 @@ window.GameMuteToggle = function () {
 };
 
 function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time) {
+  // if (!((1 <= number_of_enemies && number_of_enemies <= 4) &&
+  // (50 <= number_of_food && number_of_food <= 90) &&
+  // (time >= 60))) {
+  //   console.log("invalid inputs to the game!");
+  //   return;
+  // }
+
   if (interval != null) {
     Stop();
   }
@@ -140,10 +148,6 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
   }
   extra_eatables.push(new MovingEatable(11, 11, walls));
   hud = new HUD(board[0].length, board.length);
-  console.log(number_of_5_balls);
-  console.log(number_of_15_balls);
-  console.log(number_of_25_balls);
-  console.log(eatables.length-1);
   ///
 
   // key listeners
@@ -163,7 +167,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
   );
   ///
 
-  interval = setInterval(GameLoop, 250);
+  interval = setInterval(GameLoop, interval_time);
   audio_player.Play("opening");
 }
 
