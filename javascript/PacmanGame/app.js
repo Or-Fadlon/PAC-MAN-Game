@@ -263,7 +263,7 @@ function Collision() {
   }
   for (let i = 0; i < extra_eatables.length; i++) {
     if (player.IsCollide(extra_eatables[i])) {
-      audio_player.Play("eat");
+      audio_player.Play("eat_power_up");
       score += extra_eatables[i].points;
       extra_eatables.splice(i, 1);
       break;
@@ -271,7 +271,7 @@ function Collision() {
   }
   for (let i = 0; i < eatable_clocks.length; i++) {
     if (player.IsCollide(eatable_clocks[i])) {
-      audio_player.Play("eat"); //TODO: power sound!
+      audio_player.Play("eat_clock");
       game_time += eatable_clocks[i].time;
       eatable_clocks.splice(i, 1);
       break;
