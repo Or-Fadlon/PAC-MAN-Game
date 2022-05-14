@@ -251,12 +251,26 @@ canvas {
     width: 800px;
 }
 
-#player_css {
+#pacman_player_css {
+  position: absolute;
+  top: 30px;
+  left: 16px;
+  width: 100%;
+  text-align: left;
+  color: #2c3e50;
+  font-family: 'Cherry Swash',cursive;
+  font-size: 30px;
+}
+
+#player_name {
+  position: absolute;
+  top: 30px;
+  left: 70px;
   width: 100%;
   text-align: left;
   color: #ecf0f1;
   font-family: 'Cherry Swash',cursive;
-  font-size: 16px;
+  font-size: 30px;
 }
 
 .container2 {
