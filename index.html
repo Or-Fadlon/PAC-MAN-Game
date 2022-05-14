@@ -97,6 +97,7 @@
                     <button class = "bn54" id="start_game_button">Start Game</button>
                 </div>
 				<br>
+                <br>
             </div>
     </div>
     <div id="myModal" class="modal">
@@ -106,6 +107,24 @@
             <div id = "aboutpage">
                     About Page:<br /><br />
                     This  Website Game developed by Elran Oren (205965908) & Orel Fadlon (316394717). <br />
+                    <br>
+                    We used jQuery Plugin to validate and verify the details entered by the user,
+                    those validations and verifications took place in the login, settings and registration screen in the game. <br />
+                    <br>
+                    We used Tamplates from  googleapis and w3schools. <br />
+                    <br>
+                    Difficulties encountered during the project were:
+                    <br>
+                    1. Move between the pages of the website, and save the details from previous pages. 
+                    <br>
+                    2. Cause the ghosts to move on the game page screen in the way they will try to reach To Pacman in an intelligent way.
+                        at the end, we used BFS.
+                    <br>
+                    3. Difficulty using Object-oriented programming in javascript. We used the script type "module" to achive that difficulty. <br />
+                    <br>
+                    Have Fun!
+
+
             </div>
                 
         </div>
@@ -146,12 +165,22 @@
                 <br>
                 <p id="num_ghosts_game"></p> 
                 <br>
-                <p><u>Type Of Ghosts:</u></p>
-                <br>
                 <p><u>Game duration:</u></p>
                 <br>
                 <p id="game_duration"></p> 
                 <br>
+                <p><u>Spacial:</u></p>
+                <br>
+                <label for="c">+50 Pts:</label>
+                <img id="c" src="resources/images/coin.png" style="width:30px;height:30px;">
+                <br>
+                <br>
+                <label for="clock">+10 sec:</label>
+                <img id="clock" src="resources/images/clock.png" style="width:30px;height:30px;">
+                <br>
+                <br>
+                <label for="pill">+1 heart:</label>
+                <img id="pill" src="resources/images/pill.png" style="width:30px;height:30px;">
             </div>
             <div></div>
         </div>   
@@ -159,6 +188,9 @@
         <div align="center">
             <button class = "bn54" onclick="go_to_settings()" type="button" class="btn">New Game</button> 
         </div>  
+        <br>
+        <br>
+        <br>
     </div>
 </div>
 <footer id = "footer" class="w3-bar w3-white  w3-dark-gray w3-bottom  w3-center  ">
