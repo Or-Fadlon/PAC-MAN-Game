@@ -1,4 +1,4 @@
-var all_users;
+// var all_users;
 var curr_user;
 
 $(document).ready(function () {
@@ -80,7 +80,8 @@ $(document).ready(function () {
         email: "k@k.com",
         birthdate: "22/02/2022",
     };
-    all_users = new Array(new_user);
+    // all_users = new Array(new_user);
+    window.localStorage.setItem("k", JSON.stringify(new_user));
 });
 
 
