@@ -130,8 +130,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
     let position = RemoveAndReturnRandomItemFromArray(free_indexes);
     eatables.push(new Ball(position.x, position.y, ball_25_color, 25));
   }
-  let position = RemoveAndReturnRandomItemFromArray(free_indexes);
-  extra_eatables.push(new MovingEatable(position.x, position.y, walls));
+  extra_eatables.push(new MovingEatable(11, 11, walls));
   hud = new HUD(board[0].length, board.length);
   console.log(number_of_5_balls);
   console.log(number_of_15_balls);
