@@ -11,6 +11,8 @@ $(document).ready(function () {
     $("#start_game_button").click(function () {
         if (!check_settings()) return;
         ShowDiv("#game_div");
+        $(paceman_img).hide();
+        $(names).hide();
         let up = assign_keyboard("up");
         let down = assign_keyboard("down");
         let left = assign_keyboard("left")
@@ -42,6 +44,8 @@ $(document).ready(function () {
             else $(element).hide();
         });
         if(name!= "#game_div"){
+            $(paceman_img).show();
+            $(names).show();
             document.getElementById("login_username").value = "";
             document.getElementById("login_pass").value = "";
             document.getElementById("up_button").value = "";

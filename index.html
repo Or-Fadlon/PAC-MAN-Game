@@ -16,7 +16,7 @@
 
 <body>
 <header id="Logo_header">
-    <img src="./resources/images/pacman_logo.png" width="40%"/>
+    <img id = paceman_img src="./resources/images/pacman_logo.png" width="40%"/>
     <br>
     <br>
     <div id = names>Elran Oren(205965908) & Orel Fadlon(316394717)</div>
@@ -56,12 +56,10 @@
 	<br>
     <div align="center" id="register_div" hidden>
         <h1><font size="10" color="white"> Register</font></h1>
-            <div class="container">
                 <hr>
                 <input id="F_username" type="text" placeholder="Enter Username" name="username" required>
                 <input id="F_password" type="password" placeholder="Enter Password" name="password" required>
-                <input id="F_repeat_password" type="password" placeholder="Repeat Password" name="repeat-password"
-                       required>
+                <input id="F_repeat_password" type="password" placeholder="Repeat Password" name="repeat-password" required>
                 <input id="F_firstName" type="text" placeholder="Enter First Name" name="firstname" required>
                 <input id="F_lastName" type="text" placeholder="Enter Last name" name="lastname" required>
                 <input id="F_email" type="email" placeholder="Enter Email" name="email" required>
@@ -70,52 +68,62 @@
 
                 <button class = "bn54" onclick="check_details()" type="button" class="btn">Register</button>
 				<br>
-            </div>
     </div>
     <div align="center" id="login_div" hidden>
         <h1><font size="10" color="white"> Login</font></h1>
-            <div class="container">
                 <hr>
-                <input id="login_username" type="text" placeholder="Enter Username" name="username" required>
-                <input id="login_pass" type="password" placeholder="Enter Password" name="password" required>
+                    <input id="login_username" type="text" placeholder="Enter Username" name="username" required>
+                    <br>
+                    <input id="login_pass" type="password" placeholder="Enter Password" name="password" required>
                 <hr>
                 <button class = "bn54" onclick="login()" type="button" class="btn">Sign In</button>
-            </div>
     </div>
     <div id="settings_div" hidden>
         <h1><font size="10" color="white"> Settings</font></h1>
-            <div class="container">
                 <hr>
-                <p>Keyboard Settings:</p> <br>
-                <input id="up_button" type="text" maxlength="1" placeholder="Up Button (deafult: &#8593)">
-                <input id="down_button" type="text" maxlength="1" placeholder="Down Button (deafult: &#8595)">
-                <input id="left_button" type="text" maxlength="1" placeholder="Left Button (deafult: &#8592)">
-                <input id="right_button" type="text" maxlength="1" placeholder="Right Button (deafult: &#8594)"><br>
-                <br>
-                <p>Pac-Dots Settings: (Please choose 50-90 Dots)</p><br>
-                <input id="pac_dots_num_settings" min="50" max="90" type="number" placeholder="invalid" value=50>
-                <br>
-                <p>5 points Pac-Dots :</p>
-                <input type="color" id="5_color" value="#FF726f"/>
-                <p>15 points Pac-Dots :</p>
-                <input type="color" id="15_color" value="#88C0D3"/>
-                <p>25 points Pac-Dots :</p>
-                <input type="color" id="25_color" value="#51C251"/>
-                <br>
-                <p>Time Settings: (Please Choose a number greater then 60) </p><br>
-                <input id="time_setting" type="number" min="60" placeholder="invalid" value=60>
-                <p>Monsters Settings: (Please choose 1-4 Monsters)</p> <br>
-                <input id="monster_setting" type="number" min=1 max=4 placeholder="invalid" value=1>
-                <br/>
-				<br>
-                <button class = "bn54" type="button" onclick="random_settings()">Random Settings</button>
-                <hr>
-                <div align="center">
-                    <button class = "bn54" id="start_game_button">Start Game</button>
+                <div class="container3">
+                    <div>
+                        <p>Keyboard Settings:</p>
+                        <input id="up_button" type="text" maxlength="1" placeholder="Up Button (deafult: &#8593)">
+                        <br>
+                        <input id="down_button" type="text" maxlength="1" placeholder="Down Button (deafult: &#8595)">
+                        <br>
+                        <input id="left_button" type="text" maxlength="1" placeholder="Left Button (deafult: &#8592)">
+                        <br>
+                        <input id="right_button" type="text" maxlength="1" placeholder="Right Button (deafult: &#8594)"><br>
+                        <br>
+                        <p>Pac-Dots Settings: (Please choose 50-90 Dots)</p>
+                        <input id="pac_dots_num_settings" min="50" max="90" type="number" placeholder="invalid" value=50>
+                        <br>
+                        
+                    </div>
+                    <div>
+                        <br>
+                        <br>
+                        <br>
+                        <button class = "bn54" type="button" onclick="random_settings()">Random Settings</button>
+                        <br>
+                        <br>
+                        <br>
+                        <div align="center">
+                            <button class = "bn54" id="start_game_button">Start Game</button>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Time Settings: (Please Choose a number greater then 60) </p>
+                        <input id="time_setting" type="number" min="60" placeholder="invalid" value=60>
+                        <p>Monsters Settings: (Please choose 1-4 Monsters)</p>
+                        <input id="monster_setting" type="number" min=1 max=4 placeholder="invalid" value=1>
+                        <br/>
+                        <p>5 points Pac-Dots :</p>
+                        <input type="color" id="5_color" value="#FF726f"/>
+                        <p>15 points Pac-Dots :</p>
+                        <input type="color" id="15_color" value="#88C0D3"/>
+                        <p>25 points Pac-Dots :</p>
+                        <input type="color" id="25_color" value="#51C251"/>                     
+                    </div>
                 </div>
-				<br>
-                <br>
-            </div>
+               <hr>
     </div>
     <div id="myModal" class="modal">
         <!-- Modal content -->
@@ -154,7 +162,7 @@
             <div></div> <!-- element 1 : empty -->
 
             <div>
-                <p><u>Keyboards:</u></p> <!-- element 2 : left -->
+                <p><u>Keyboards:</u></p> 
                 <br>
                 <p id="up_game"></p>
                 <p id="down_game"></p>
