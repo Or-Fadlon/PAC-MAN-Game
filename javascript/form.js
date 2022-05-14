@@ -29,7 +29,8 @@ function check_details() {
             email: email,
             birthdate: date
         };
-        all_users[all_users.length] = new_user;
+        window.localStorage.setItem(username, JSON.stringify(new_user));
+        // all_users[all_users.length] = new_user;
         curr_user = new_user;
         $("#welcome_div").hide();
         $("#register_div").hide();
@@ -64,30 +65,44 @@ function check_repeat_password(password, repeat_password) {
 
 
 function check_username(username) {
-    var i;
-    for (i = 0; i < all_users.length; i++) {
-        if (all_users[i].username == username) {
-            alert("This username allready exists!, please choose another username :)");
-            is_valid = false;
-        }
+    // var i;
+    // for (i = 0; i < all_users.length; i++) {
+    //     if (all_users[i].username == username) {
+    //         alert("This username allready exists!, please choose another username :)");
+    //         is_valid = false;
+    //     }
+    // }
+
+    if(window.localStorage.getItem(username)){
+        alert("This username allready exists!, please choose another username :)");
+        is_valid = false;
     }
 }
 
 function login() {
 
-    var i;
+    // var i;
     var is_user_found = false;
     var username = $("#login_username").val();
     var password = $("#login_pass").val();
 
-    for (i = 0; i < all_users.length; i++) {
-        if (all_users[i].username == username) {
-            if (all_users[i].password == password) {
-                is_user_found = true;
-                curr_user = all_users[i];
-                break;
-            }
+    // for (i = 0; i < all_users.length; i++) {
+    //     if (all_users[i].username == username) {
+    //         if (all_users[i].password == password) {
+    //             is_user_found = true;
+    //             curr_user = all_users[i];
+    //             break;
+    //         }
+    //     }
+    // }
+
+    let u = JSON.parse(window.localStorage.getItem(username));
+    if(u){
+        if (u.password == password) {
+            is_user_found = true;
+            curr_user = u;
         }
+
     }
 
     if (is_user_found == true) {
