@@ -91,6 +91,8 @@ function login() {
     }
 
     if (is_user_found == true) {
+        $("#one").hide();
+        $("#two").show(); 
         $("#welcome_div").hide();
         $("#register_div").hide();
         $("#login_div").hide();
