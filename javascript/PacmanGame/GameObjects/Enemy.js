@@ -11,7 +11,8 @@ class Enemy extends Moveable {
 
     Tick() {
         this.Stop();
-        let next_state = this.BFS(this.x, this.y, this.player.x, this.player.y, this.board)[1];
+        let path = this.BFS(this.x, this.y, this.player.x, this.player.y, this.board);
+        let next_state = path[0];
         if (this.x == next_state.x && this.y - 1 == next_state.y) {
             this.Up();
         } else if (this.x + 1 == next_state.x && this.y == next_state.y) {
@@ -93,8 +94,8 @@ class Enemy extends Moveable {
         let current = goal_state;
         path.unshift(current);
         while (!(current.y == start_state.y && current.x == start_state.x)){
-            current = current.predecessor;
             path.unshift(current);
+            current = current.predecessor;
         }
         return path;
     }
