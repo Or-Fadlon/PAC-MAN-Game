@@ -7,21 +7,31 @@ class PacmanSound {
       eat: "./resources/audios/eating.short.ogg",
     };
     this.loopers = [];
+    this.mute = false;
   }
 
   Play(sound_name, loop = false) {
-    let audio = new Audio(this.dict[sound_name]);
-    if (loop) {
-      this.loopers.push(audio);
+    if (!this.mute) {
+      let audio = new Audio(this.dict[sound_name]);
+      if (loop) {
+        this.loopers.push(audio);
+      }
+      audio.loop = loop;
+      audio.play();
     }
-    audio.loop = loop;
-    audio.play();
   }
 
   Stop() {
     this.loopers.forEach(element => {
       element.stop();
     });
+  }
+
+  MuteToggle() {
+    this.mute = !this.Mute;
+    if (this.mute) {
+      this.Stop();
+    }
   }
 }
 export { PacmanSound };

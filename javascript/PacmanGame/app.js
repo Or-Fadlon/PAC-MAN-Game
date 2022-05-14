@@ -23,6 +23,7 @@ const enemies_color = [
   "#FFCC00",
 ];
 const keysDown = {};
+const audio_player = new PacmanSound();
 
 // Arrows
 let up_arrow;
@@ -39,7 +40,6 @@ let life = start_life;
 let start_time;
 let time_elapsed;
 let game_time;
-let audio_player;
 
 // Game Objects
 let board;
@@ -54,6 +54,10 @@ let hud;
 window.StartGame = function (canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time) {
   Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time);
   // Start(canvas, 38, 39, 40, 37, "red", "green", "blue", 2, 50);
+};
+
+window.GameMuteToggle = function () {
+  audio_player.MuteToggle();
 };
 
 function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time) {
@@ -76,7 +80,6 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
   game_time = time;
   start_time = new Date();
   time_elapsed = 0;
-  audio_player = new PacmanSound();
   ///
 
   // Game Objects

@@ -11,17 +11,92 @@ class Enemy extends Moveable {
 
     Tick() {
         this.Stop();
-        if (this.player.y < this.y) {
+        let next_state = this.BFS(this.x, this.y, this.player.x, this.player.y, this.board)[1];
+        if (this.x == next_state.x && this.y - 1 == next_state.y) {
             this.Up();
-        } else if (this.player.x > this.x) {
+        } else if (this.x + 1 == next_state.x && this.y == next_state.y) {
             this.Right();
-        } else if (this.player.y > this.y) {
+        } else if (this.x == next_state.x && this.y + 1 == next_state.y) {
             this.Down()
-        } else if (this.player.x < this.x) {
+        } else if (this.x - 1 == next_state.x && this.y == next_state.y) {
             this.Left()
         }
 
         super.Tick();
+    }
+
+    BFS (object_x, object_y, goal_x, goal_y, board) {
+        let closed_list = {};
+        let queue = new Array();
+        let start_state = new Object;
+        let goal_state = new Object;
+        start_state.x = object_x;
+        start_state.y = object_y;
+        goal_state.x = goal_x;
+        goal_state.y = goal_y;
+        let start_state_key = object_x.toString() + "," + object_y.toString(); //change var nme
+    
+        closed_list[start_state_key] = start_state;
+        queue.push(start_state);
+    
+        while (queue.length != 0) {
+            let current_state = queue.shift();
+            if (current_state.x == goal_state.x && current_state.y == goal_state.y) {
+                return this.getPathFromState(start_state, current_state);
+            }
+            let neighbors = this.generateAllNeighbors(current_state, board);
+            for (let i = 0; i < neighbors.length; i++) {
+                let neighbor_key = neighbors[i].x.toString() + "," + neighbors[i].y.toString();
+                if (!(neighbor_key in closed_list)) {
+                    neighbors[i].predecessor = current_state;
+                    closed_list[neighbor_key] = neighbors[i];
+                    queue.push(neighbors[i]);
+                }
+            }
+        }
+        return new Array();
+    }
+    
+    
+    generateAllNeighbors(state, board) {
+        //TODO: handle portal
+        let successors = new Array();
+        if (state.x > 0 && board[state.y][state.x - 1] == 0){
+            let up_state = new Object;
+            up_state.x = state.x - 1;
+            up_state.y = state.y;
+            successors.push(up_state);
+        }
+        if(state.x < this.board[0].length - 1 && board[state.y][state.x + 1] == 0){
+            let down_state = new Object;
+            down_state.x = state.x + 1;
+            down_state.y = state.y;
+            successors.push(down_state);
+        }
+        if(state.y > 0 && board[state.y - 1][state.x] == 0){
+            let left_state = new Object;
+            left_state.x = state.x;
+            left_state.y = state.y - 1;
+            successors.push(left_state);
+        }
+        if(state.y < this.board.length - 1 && board[state.y + 1][state.x] == 0){
+            let right_state = new Object;
+            right_state.x = state.x;
+            right_state.y = state.y + 1;
+            successors.push(right_state);
+        }
+        return successors;
+    }
+    
+    getPathFromState(start_state , goal_state) {
+        let path = new Array();
+        let current = goal_state;
+        path.unshift(current);
+        while (!(current.y == start_state.y && current.x == start_state.x)){
+            current = current.predecessor;
+            path.unshift(current);
+        }
+        return path;
     }
 
     Render (context) {
