@@ -11,7 +11,7 @@ import { GamePopUp } from "./GameObjects/GamePopUp.js";
 import { GetWallLayout, GetFreeIndexesArray, RemoveAndReturnRandomItemFromArray } from "./OtherFunctions.js";
 
 // consts
-const interval_time = 150;
+const interval_time = 200;
 const start_life = 5;
 const enemies_positions = [
   [1, 1],
@@ -218,15 +218,19 @@ function Tick() {
 function HandlePlayerMovement() {
   if (keysDown[up_arrow]) {
     player.Up();
+    keysDown[up_arrow] = false;
   }
   if (keysDown[right_arrow]) {
     player.Right();
+    keysDown[right_arrow] = false;
   }
   if (keysDown[down_arrow]) {
     player.Down();
+    keysDown[down_arrow] = false;
   }
   if (keysDown[left_arrow]) {
     player.Left();
+    keysDown[left_arrow] = false;
   }
 }
 
