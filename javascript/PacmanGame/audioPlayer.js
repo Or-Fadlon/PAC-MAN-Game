@@ -8,6 +8,7 @@ class PacmanSound {
       eat_clock: "./resources/audios/eat_clock.ogg",
       eat_power_up: "./resources/audios/eat_life.ogg",
     };
+    this.single = [];
     this.loopers = [];
     this.mute = false;
   }
@@ -18,15 +19,25 @@ class PacmanSound {
       if (loop) {
         this.loopers.push(audio);
       }
+     else {
+       this.single.push(audio);
+     }
       audio.loop = loop;
       audio.play();
     }
   }
 
   Stop() {
-    this.loopers.forEach(element => {
-      element.stop();
+    this.single.forEach(element => {
+      element.pause();
+      element.currentTime = 0;
     });
+    this.single = [];
+    this.loopers.forEach(element => {
+      element.pause();
+      element.currentTime = 0;
+    });
+    this.loopers = [];
   }
 
   MuteToggle() {
