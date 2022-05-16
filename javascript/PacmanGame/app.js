@@ -60,6 +60,10 @@ window.StartGame = function (canvas, up, right, down, left, ball_5_color, ball_1
   // Start(canvas, 38, 39, 40, 37, "red", "green", "blue", 2, 50);
 };
 
+window.StopGame = function () {
+  Stop();
+};
+
 window.GameMuteToggle = function () {
   audio_player.MuteToggle();
 };

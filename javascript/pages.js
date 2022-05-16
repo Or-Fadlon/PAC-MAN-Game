@@ -49,7 +49,8 @@ $(document).ready(function () {
             if (element == name) $(element).show();
             else $(element).hide();
         });
-        if(name!= "#game_div"){
+        if(name!= "#game_div") {
+            window.StopGame();
             $(function() {
                 $("header").show();
             });
