@@ -25,9 +25,9 @@ $(document).ready(function () {
         let ball_5_color = $("#5_color").val();
         let ball_15_color = $("#15_color").val();
         let ball_25_color = $("#25_color").val();
-        let number_of_enemies = $("#monster_setting").val();
-        let number_of_food = $("#pac_dots_num_settings").val();
-        let time = $("#time_setting").val();
+        let number_of_enemies = parseInt($("#monster_setting").val());
+        let number_of_food = parseInt($("#pac_dots_num_settings").val());
+        let time = parseInt($("#time_setting").val());
         $("#player_name").text(curr_user.username);
         $("#up_game").text("Up: " + assign_keyboard_game("up"));
         $("#down_game").text("Down: " + assign_keyboard_game("down"));

@@ -65,12 +65,17 @@ window.GameMuteToggle = function () {
 };
 
 function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time) {
-  // if (!((1 <= number_of_enemies && number_of_enemies <= 4) &&
-  // (50 <= number_of_food && number_of_food <= 90) &&
-  // (time >= 60))) {
-  //   console.log("invalid inputs to the game!");
-  //   return;
-  // }
+  if (!(
+  (typeof(number_of_enemies) == "number") &&
+  (typeof(number_of_food) == "number") &&
+  (typeof(time) == "number") &&
+  (1 <= number_of_enemies && number_of_enemies <= 4) &&
+  (50 <= number_of_food && number_of_food <= 90) &&
+  (time >= 60)
+  )) {
+    console.log("invalid inputs to the game!");
+    return;
+  }
 
   if (interval != null) {
     Stop();
