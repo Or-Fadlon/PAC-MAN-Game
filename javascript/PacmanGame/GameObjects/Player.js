@@ -14,7 +14,7 @@ class Player extends Moveable {
             let old_y = this.y;
             let temp_vel_x = 0;
             let temp_vel_y = 0;
-            if (this.diraction == this.next_move) {
+            if (this.diraction == this.next_move && (this.velocity_x != 0 || this.velocity_y != 0)) {
                 this.next_move = "";
                 super.Tick();
             } else {
@@ -133,6 +133,15 @@ class Player extends Moveable {
 
     Left() {
         this.next_move = "left";
+    }
+
+    RestartAfterKill() {
+        this.velocity_x = 0;
+        this.velocity_y = 0;
+        this.diraction = "right";
+        this.pac_mouth_open = true;
+        this.pac_mouth = 0;
+        this.next_move = "";
     }
 }
 

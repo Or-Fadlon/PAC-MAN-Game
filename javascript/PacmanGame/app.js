@@ -12,6 +12,7 @@ import { GetWallLayout, GetFreeIndexesArray, RemoveAndReturnRandomItemFromArray 
 
 // consts
 const interval_time = 200;
+const back_colume = 0.2;
 const start_life = 5;
 const enemies_positions = [
   [1, 1],
@@ -66,6 +67,8 @@ window.StopGame = function () {
 
 window.GameMuteToggle = function () {
   audio_player.MuteToggle();
+  
+  audio_player.Play("back", back_colume, true);
 };
 
 function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time) {
@@ -127,7 +130,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
   board[player_position.x][player_position.y] = 3;
   for (let i = 0; i < number_of_enemies; i++) {
     enemies.push(
-      new Enemy(enemies_positions[i][0], enemies_positions[i][1], walls, player, board, enemies_color[i])
+      new Enemy(enemies_positions[i][0], enemies_positions[i][1], walls, player, board, enemies_color[i], enemies)
     );
   }
   let number_of_5_balls = number_of_food * 0.6;
@@ -177,7 +180,7 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
   ///
 
   interval = setInterval(GameLoop, interval_time);
-  audio_player.Play("opening");
+  audio_player.Play("back", back_colume, true);
 }
 
 function Stop() {
@@ -311,6 +314,7 @@ function Collision() {
 
   for (let i = 0; i < enemies.length; i++) {
     if (player.IsCollide(enemies[i])) {
+      audio_player.Play("hit");
       GhostCollisionHandler();
       break;
     }
@@ -324,6 +328,7 @@ function Collision() {
       let player_position = RemoveAndReturnRandomItemFromArray(free_indexes);
       player.x = player_position.x;
       player.y = player_position.y;
+      player.RestartAfterKill()
       for (let i = 0; i < enemies.length; i++) {
         enemies[i].x = enemies_positions[i][0];
         enemies[i].y = enemies_positions[i][1];

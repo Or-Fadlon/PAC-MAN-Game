@@ -1,33 +1,51 @@
 import {Moveable} from "./Moveable.js";
 
 class Enemy extends Moveable {
-    constructor(x, y, walls, player, board, color = "red") {
+    constructor(x, y, walls, player, board, color = "red", enemy_list) {
         super(x, y, walls);
         this.board = board;
         this.player = player;
         this.color = color;
         this.animation = 1;
+        this.enemy_list = enemy_list;
+        this.random_factor = 3;
     }
 
     Tick() {
-        this.Stop();
-        let path = this.BFS(this.x, this.y, this.player.x, this.player.y, this.board);
-        let next_state = path[0];
-        if (next_state != null) {
-            if (this.x == next_state.x && this.y - 1 == next_state.y) {
-                this.Up();
-            } else if (this.x + 1 == next_state.x && this.y == next_state.y) {
-                this.Right();
-            } else if (this.x == next_state.x && this.y + 1 == next_state.y) {
-                this.Down()
-            } else if (this.x - 1 == next_state.x && this.y == next_state.y) {
-                this.Left()
+        let rand = Math.floor(Math.random() * this.random_factor);
+        if (rand == 0 || rand == 1) {
+            this.Stop();
+            let path = this.BFS(this.x, this.y, this.player.x, this.player.y, this.board);
+            let next_state = path[0];
+            if (next_state != null) {
+                if (this.x == next_state.x && this.y - 1 == next_state.y) {
+                    this.Up();
+                } else if (this.x + 1 == next_state.x && this.y == next_state.y) {
+                    this.Right();
+                } else if (this.x == next_state.x && this.y + 1 == next_state.y) {
+                    this.Down()
+                } else if (this.x - 1 == next_state.x && this.y == next_state.y) {
+                    this.Left()
+                }
+            } else {
+                console.log("pick");
             }
-        } else {
-            console.log("blablabla"); //TODO: remove if not cousing an issue
-        }
+            let old_x = this.x;
+            let old_y = this.y;
+            super.Tick();
 
-        super.Tick();
+            let is_collide_with_enemy = false;
+            this.enemy_list.forEach(enemy => {
+                if (this != enemy && this.IsCollide(enemy)) {
+                    is_collide_with_enemy = true;
+                }
+            });
+
+            if (is_collide_with_enemy) {
+                this.x = old_x;
+                this.y = old_y;
+            }
+        }
     }
 
     BFS (object_x, object_y, goal_x, goal_y, board) {
@@ -64,7 +82,6 @@ class Enemy extends Moveable {
     
     
     generateAllNeighbors(state, board) {
-        //TODO: handle portal
         let successors = new Array();
         if (state.x > 0 && board[state.y][state.x - 1] != 1){
             let up_state = new Object;

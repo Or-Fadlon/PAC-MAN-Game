@@ -1,8 +1,10 @@
 class PacmanSound {
   constructor() {
     this.dict = {
+      back: "./resources/audios/pacman_music.mp3",
       opening: "./resources/audios/opening_song.ogg",
       siren: "./resources/audios/siren.ogg",
+      hit: "./resources/audios/hit.wav",
       die: "./resources/audios/die.ogg",
       eat: "./resources/audios/eating.short.ogg",
       eat_clock: "./resources/audios/eat_clock.ogg",
@@ -13,7 +15,7 @@ class PacmanSound {
     this.mute = false;
   }
 
-  Play(sound_name, loop = false) {
+  Play(sound_name, volume = 1, loop = false) {
     if (!this.mute) {
       let audio = new Audio(this.dict[sound_name]);
       if (loop) {
@@ -23,6 +25,7 @@ class PacmanSound {
        this.single.push(audio);
      }
       audio.loop = loop;
+      audio.volume = volume;
       audio.play();
     }
   }
