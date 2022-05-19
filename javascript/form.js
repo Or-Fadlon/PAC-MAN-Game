@@ -12,12 +12,12 @@ function check_details() {
     check_empty_fields_func(username, password, repeat_password, first_name, last_name, email, date);
     if(!is_valid)
         return;
-    general_check(password, /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,}$/,"This password is invalid:" + "\n" + "-Password must be at least 6 characters" + "\n" +
+    general_check(password, new RegExp(/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,}$/),"This password is invalid:" + "\n" + "-Password must be at least 6 characters" + "\n" +
     "-Password must contain both letters and numbers");
     check_repeat_password(password, repeat_password);
-    general_check(first_name, /^[a-zA-Z]*$/, "your firstname is invalid - you can use only alphabetic letters");
-    general_check(last_name, /^[a-zA-Z]*$/,  "your lastname is invalid - you can use only alphabetic letters");
-    general_check(email, /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/, "This email is invalid!, please choose other valid email address :)");
+    general_check(first_name, new RegExp(/^[a-zA-Z]*$/), "your firstname is invalid - you can use only alphabetic letters");
+    general_check(last_name, new RegExp(/^[a-zA-Z]*$/),  "your lastname is invalid - you can use only alphabetic letters");
+    general_check(email, new RegExp(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/), "This email is invalid!, please choose other valid email address :)");
     check_username(username);
     if (is_valid) {
 
@@ -30,7 +30,6 @@ function check_details() {
             birthdate: date
         };
         window.localStorage.setItem(username, JSON.stringify(new_user));
-        // all_users[all_users.length] = new_user;
         curr_user = new_user;
         $("#welcome_div").hide();
         $("#register_div").hide();
@@ -43,7 +42,7 @@ function check_details() {
 }
 
 function check_empty_fields_func(username, password, repeat_password, first_name, last_name, email, date) {
-    if (username == '' || password == '' || repeat_password == '' || first_name == '' || last_name == '' || email == '' || date == '') {
+    if (username === '' || password === '' || repeat_password === '' || first_name === '' || last_name === '' || email === '' || date === '') {
         alert("all fields must be filled!");
         is_valid = false;
     }
@@ -65,13 +64,6 @@ function check_repeat_password(password, repeat_password) {
 
 
 function check_username(username) {
-    // var i;
-    // for (i = 0; i < all_users.length; i++) {
-    //     if (all_users[i].username == username) {
-    //         alert("This username allready exists!, please choose another username :)");
-    //         is_valid = false;
-    //     }
-    // }
 
     if(window.localStorage.getItem(username)){
         alert("This username allready exists!, please choose another username :)");
@@ -81,20 +73,10 @@ function check_username(username) {
 
 function login() {
 
-    // var i;
     var is_user_found = false;
     var username = $("#login_username").val();
     var password = $("#login_pass").val();
 
-    // for (i = 0; i < all_users.length; i++) {
-    //     if (all_users[i].username == username) {
-    //         if (all_users[i].password == password) {
-    //             is_user_found = true;
-    //             curr_user = all_users[i];
-    //             break;
-    //         }
-    //     }
-    // }
 
     let u = JSON.parse(window.localStorage.getItem(username));
     if(u){
