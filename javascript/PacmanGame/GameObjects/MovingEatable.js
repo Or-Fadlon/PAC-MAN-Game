@@ -6,13 +6,13 @@ class MovingEatable extends Moveable {
         this.eatable_type = "moving";
         this.color = color;
         this.points = 50;
-        
+
         this.image = new Image(30, 30); // Using optional size for image
         this.image.src = "./resources/images/coin.gif";
     }
 
     Tick() {
-        if (this.velocity_x == 0 && this.velocity_y ==0) {
+        if (this.velocity_x == 0 && this.velocity_y == 0) {
             let move = Math.floor(Math.random() * 4);
             if (move == 0) {
                 this.Up();

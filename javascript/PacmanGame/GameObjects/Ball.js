@@ -10,7 +10,7 @@ class Ball extends Eatable {
     Render(context) {
         let width = this.width;
         let height = this.height;
-        let center = new Object();
+        let center = {};
         center.x = this.x * width + 0.5 * width;
         center.y = this.y * height + 0.5 * height;
         context.beginPath();

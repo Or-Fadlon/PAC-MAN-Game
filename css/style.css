@@ -1,68 +1,69 @@
 /* The Modal (background) */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 #footer {
-  width: 100%;
-  text-align: center;
-  color: #ecf0f1;
-  font-family: 'Cherry Swash',cursive;
-  font-size: 16px;
+    width: 100%;
+    text-align: center;
+    color: #ecf0f1;
+    font-family: 'Cherry Swash', cursive;
+    font-size: 16px;
 }
 
 #Logo_header {
-  padding: 0px;
-  text-align: center;
-  color: white;
-  font-size: 14px;
+    padding: 0px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
 }
 
-  /* Menu CSS */
+/* Menu CSS */
 nav {
     margin: 27px auto 0;
-  
+
     position: relative;
     width: 300px;
     height: 50px;
     background-color: #34495e;
     border-radius: 8px;
     font-size: 0;
-  }
-  nav a {
+}
+
+nav a {
     line-height: 50px;
     height: 100%;
     font-size: 15px;
@@ -74,46 +75,54 @@ nav {
     text-align: center;
     color: white;
     cursor: pointer;
-  }
-  nav .animation {
+}
+
+nav .animation {
     position: absolute;
     height: 100%;
     top: 0;
     z-index: 0;
     transition: all .5s ease 0s;
     border-radius: 8px;
-  }
-  a:nth-child(1) {
+}
+
+a:nth-child(1) {
     width: 100px;
-  }
-  a:nth-child(2) {
+}
+
+a:nth-child(2) {
     width: 100px;
-  }
-  a:nth-child(3) {
+}
+
+a:nth-child(3) {
     width: 100px;
-  }
-  nav .start-home, a:nth-child(1):hover~.animation {
+}
+
+nav .start-home, a:nth-child(1):hover ~ .animation {
     width: 100px;
     left: 0;
     background-color: #2ccacf;
-  }
-  nav .start-about, a:nth-child(2):hover~.animation {
+}
+
+nav .start-about, a:nth-child(2):hover ~ .animation {
     width: 100px;
     left: 100px;
     background-color: #ca2b2b;
-  }
-  nav .start-blog, a:nth-child(3):hover~.animation {
+}
+
+nav .start-blog, a:nth-child(3):hover ~ .animation {
     width: 100px;
     left: 200px;
     background-color: #e08d10;
-  }
-  
-  body {
+}
+
+body {
     font-size: 12px;
     font-family: sans-serif;
     background: #2c3e50;
-  }
-  h1 {
+}
+
+h1 {
 
     margin: 40px 0 40px;
     text-align: center;
@@ -121,24 +130,24 @@ nav {
     color: #ecf0f1;
     text-shadow: 2px 2px 4px #000000;
     font-family: 'Cherry Swash', cursive;
-  } 
-  
-    p {
-      
-      bottom: 20px;
-      width: 100%;
-      text-align: left;
-      color: #ecf0f1;
-      font-family: 'Cherry Swash',cursive;
-      font-size: 16px;
-  }
-  
-  span {
-      color: #2BD6B4;
-  }
+}
 
-  /* Button CSS */
-  .bn54 {
+p {
+
+    bottom: 20px;
+    width: 100%;
+    text-align: left;
+    color: #ecf0f1;
+    font-family: 'Cherry Swash', cursive;
+    font-size: 16px;
+}
+
+span {
+    color: #2BD6B4;
+}
+
+/* Button CSS */
+.bn54 {
     font-family: 'Cherry Swash', cursive;
     position: relative;
     outline: none;
@@ -154,92 +163,93 @@ nav {
     opacity: 1;
     background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.6);
-  }
-  
-  .bn54 .bn54span {
+}
+
+.bn54 .bn54span {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     color: #000000;
     font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.7px;
-  }
-  
-  .bn54:hover {
+}
+
+.bn54:hover {
     animation: bn54rotate 0.7s ease-in-out both;
-  }
-  
-  .bn54:hover .bn54span {
+}
+
+.bn54:hover .bn54span {
     animation: bn54storm 0.7s ease-in-out both;
     animation-delay: 0.06s;
-  }
-  
-  @keyframes bn54rotate {
+}
+
+@keyframes bn54rotate {
     0% {
-      transform: rotate(0deg) translate3d(0, 0, 0);
+        transform: rotate(0deg) translate3d(0, 0, 0);
     }
     25% {
-      transform: rotate(3deg) translate3d(0, 0, 0);
+        transform: rotate(3deg) translate3d(0, 0, 0);
     }
     50% {
-      transform: rotate(-3deg) translate3d(0, 0, 0);
+        transform: rotate(-3deg) translate3d(0, 0, 0);
     }
     75% {
-      transform: rotate(1deg) translate3d(0, 0, 0);
+        transform: rotate(1deg) translate3d(0, 0, 0);
     }
     100% {
-      transform: rotate(0deg) translate3d(0, 0, 0);
+        transform: rotate(0deg) translate3d(0, 0, 0);
     }
-  }
-  
-  @keyframes bn54storm {
+}
+
+@keyframes bn54storm {
     0% {
-      transform: translate3d(0, 0, 0) translateZ(0);
+        transform: translate3d(0, 0, 0) translateZ(0);
     }
     25% {
-      transform: translate3d(4px, 0, 0) translateZ(0);
+        transform: translate3d(4px, 0, 0) translateZ(0);
     }
     50% {
-      transform: translate3d(-3px, 0, 0) translateZ(0);
+        transform: translate3d(-3px, 0, 0) translateZ(0);
     }
     75% {
-      transform: translate3d(2px, 0, 0) translateZ(0);
+        transform: translate3d(2px, 0, 0) translateZ(0);
     }
     100% {
-      transform: translate3d(0, 0, 0) translateZ(0);
+        transform: translate3d(0, 0, 0) translateZ(0);
     }
-  }
+}
 
 /* Fileds CSS */
-  #login_username, #login_pass, #F_username, #F_password, #F_repeat_password,
-    #F_firstName, #F_lastName, #F_email, #F_date, #up_button, #down_button, 
-    #left_button, #right_button, #pac_dots_num_settings, #time_setting, 
-    #monster_setting{
+#login_username, #login_pass, #F_username, #F_password, #F_repeat_password,
+#F_firstName, #F_lastName, #F_email, #F_date, #up_button, #down_button,
+#left_button, #right_button, #pac_dots_num_settings, #time_setting,
+#monster_setting {
     width: 400px;
     padding: 10px;
     font-size: 18px;
-    outline:none;
+    outline: none;
     background: linear-gradient(to left top, #000, #22132e) fixed;
     border-radius: 10px;
     border: 2px solid rgba(243, 238, 238, 0.2);
-    color: rgba(255,255,255,0.8);
+    color: rgba(255, 255, 255, 0.8);
     transition: all 0.5s;
-  }
-  
-  #login_username:hover:hover, #F_username:hover, #F_password:hover, 
-  #F_repeat_password:hover, #F_firstName:hover, #F_lastName:hover, 
-  #F_email:hover, #F_date:hover, #up_button:hover, #down_button:hover, 
-  #left_button:hover, #right_button:hover, #pac_dots_num_settings:hover,
-  #time_setting:hover, #monster_setting:hover{
-    border: 2px solid rgba(255,255,255,0.5);
-  }
-  #login_username:focus, #login_pass:focus, #F_username:focus, 
-  #F_password:focus, #F_repeat_password:focus,#F_firstName:focus,
-  #F_lastName:focus, #F_email:focus, #F_date:focus, #up_button:focus,
-  #down_button:focus, #left_button:focus, #right_button:focus,
-  #pac_dots_num_settings:focus,#time_setting:focus, #monster_setting:focus {
-    border: 2px solid rgba(255,255,255,0.5);
+}
+
+#login_username:hover:hover, #F_username:hover, #F_password:hover,
+#F_repeat_password:hover, #F_firstName:hover, #F_lastName:hover,
+#F_email:hover, #F_date:hover, #up_button:hover, #down_button:hover,
+#left_button:hover, #right_button:hover, #pac_dots_num_settings:hover,
+#time_setting:hover, #monster_setting:hover {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+#login_username:focus, #login_pass:focus, #F_username:focus,
+#F_password:focus, #F_repeat_password:focus, #F_firstName:focus,
+#F_lastName:focus, #F_email:focus, #F_date:focus, #up_button:focus,
+#down_button:focus, #left_button:focus, #right_button:focus,
+#pac_dots_num_settings:focus, #time_setting:focus, #monster_setting:focus {
+    border: 2px solid rgba(255, 255, 255, 0.5);
     background: linear-gradient(to left top, #000, #4e2d69) fixed;
-  }
+}
 
 
 canvas {
@@ -252,155 +262,155 @@ canvas {
 }
 
 #pacman_player_css {
-  position: absolute;
-  top: 30px;
-  left: 16px;
-  width: 100%;
-  text-align: left;
-  color: #2c3e50;
-  font-family: 'Cherry Swash',cursive;
-  font-size: 30px;
+    position: absolute;
+    top: 30px;
+    left: 16px;
+    width: 100%;
+    text-align: left;
+    color: #2c3e50;
+    font-family: 'Cherry Swash', cursive;
+    font-size: 30px;
 }
 
 #player_name {
-  position: absolute;
-  top: 30px;
-  left: 70px;
-  width: 100%;
-  text-align: left;
-  color: #ecf0f1;
-  font-family: 'Cherry Swash',cursive;
-  font-size: 30px;
+    position: absolute;
+    top: 30px;
+    left: 70px;
+    width: 100%;
+    text-align: left;
+    color: #ecf0f1;
+    font-family: 'Cherry Swash', cursive;
+    font-size: 30px;
 }
 
 .container2 {
-  display: flex; 
-  flex-direction: "row"; 
-  justify-content: space-between;
+    display: flex;
+    flex-direction: "row";
+    justify-content: space-between;
 }
 
-p{
-  color: #ecf0f1;
-  font-family: 'Cherry Swash',cursive;
-  font-size: 16px;
-  line-height: 0.5 ;
+p {
+    color: #ecf0f1;
+    font-family: 'Cherry Swash', cursive;
+    font-size: 16px;
+    line-height: 0.5;
 }
 
-u{
-  color: #ecf0f1;
-  font-family: 'Cherry Swash',cursive;
-  font-size: 16px;
+u {
+    color: #ecf0f1;
+    font-family: 'Cherry Swash', cursive;
+    font-size: 16px;
 }
 
-#names{
-  color: #ecf0f1;
-  font-family: 'Cherry Swash',cursive;
-  font-size: 14px;
-  line-height: 0.5 ;
+#names {
+    color: #ecf0f1;
+    font-family: 'Cherry Swash', cursive;
+    font-size: 14px;
+    line-height: 0.5;
 }
 
-#aboutpage{
-  color: #000000;
-  font-family: 'Cherry Swash',cursive;
-  font-size: 14px;
+#aboutpage {
+    color: #000000;
+    font-family: 'Cherry Swash', cursive;
+    font-size: 14px;
 }
 
-label{
-  color: #ecf0f1;
-  font-family: 'Cherry Swash',cursive;
-  font-size: 16px;
+label {
+    color: #ecf0f1;
+    font-family: 'Cherry Swash', cursive;
+    font-size: 16px;
 }
- 
-.buttons{
-  display: inline;
+
+.buttons {
+    display: inline;
 }
 
 .container3 {
-  display: flex; 
-  flex-direction: "row"; 
-  justify-content:space-around;
+    display: flex;
+    flex-direction: "row";
+    justify-content: space-around;
 }
 
 span.a {
-  display: inline; /* the default for span */
-  width: 100px;
-  height: 100px;
-  padding: 5px;
+    display: inline; /* the default for span */
+    width: 100px;
+    height: 100px;
+    padding: 5px;
 }
 
 ::-webkit-calendar-picker-indicator {
-  filter: invert(1);
+    filter: invert(1);
 }
 
 
 /*on off button*/
 
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 90px;
-  height: 34px;
+    position: relative;
+    display: inline-block;
+    width: 90px;
+    height: 34px;
 }
 
-.switch input {display:none;}
+.switch input {
+    display: none;
+}
 
 .slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #2ab934;
-  -webkit-transition: .4s;
-  transition: .4s;
-   border-radius: 34px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2ab934;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
 }
 
 .slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: #ca2222;
+    background-color: #ca2222;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #2196F3;
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(55px);
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(55px);
 }
 
 /*------ ADDED CSS ---------*/
-.slider:after
-{
- content:'ON';
- color: white;
- display: block;
- position: absolute;
- transform: translate(-50%,-50%);
- top: 50%;
- left: 50%;
- font-size: 10px;
- font-family: Verdana, sans-serif;
+.slider:after {
+    content: 'ON';
+    color: white;
+    display: block;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    font-size: 10px;
+    font-family: Verdana, sans-serif;
 }
 
-input:checked + .slider:after
-{  
-  content:'OFF';
+input:checked + .slider:after {
+    content: 'OFF';
 }
 
 /*--------- END --------*/

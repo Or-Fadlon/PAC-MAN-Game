@@ -3,8 +3,8 @@ var curr_user;
 
 $(document).ready(function () {
     $("#welcome_label").click(() => ShowDiv("#welcome_div"));
-    $("#register_button").click(() => ShowDiv("#register_div"));
-    $("#register_label").click(() => ShowDiv("#register_div"));
+    $("#register_button").click(() => go_to_settings());
+    $("#register_label").click(() => go_to_settings());
     $("#play_label").click(() => ShowDiv("#settings_div"));
     $("#login_label").click(() => ShowDiv("#login_div"));
     $("#login_button").click(() => ShowDiv("#login_div"));
@@ -13,11 +13,11 @@ $(document).ready(function () {
         ShowDiv("#game_div");
         $(paceman_img).hide();
         $(names).hide();
-        $(function() {
+        $(function () {
             $("header").hide();
             $("content").hide();
         });
-        
+
         let up = assign_keyboard("up");
         let down = assign_keyboard("down");
         let left = assign_keyboard("left")
@@ -38,11 +38,11 @@ $(document).ready(function () {
         document.getElementById("15_color_game").value = $("#15_color").val();
         document.getElementById("25_color_game").value = $("#25_color").val();
         $("#num_ghosts_game").text("Number Of Ghosts: " + number_of_enemies);
-        $("#game_duration").text(time+ " Seconds");
+        $("#game_duration").text(time + " Seconds");
         window.StartGame(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time);
     });
 
-    var new_user = {
+    let new_user = {
         username: "k",
         password: "k",
         firstName: "k",
@@ -56,14 +56,14 @@ $(document).ready(function () {
 
 function ShowDiv(name) {
     document.getElementById("content").style.display = "none";
-    let arr = ["#welcome_div", "#register_div", "#login_div", "#settings_div", "#about_div", "#game_div"];
-    arr.forEach(element => {
-        if (element == name) $(element).show();
+    const pages_array = ["#welcome_div", "#register_div", "#login_div", "#settings_div", "#about_div", "#game_div"];
+    pages_array.forEach(element => {
+        if (element === name) $(element).show();
         else $(element).hide();
     });
-    if(name!= "#game_div") {
+    if (name !== "#game_div") {
         window.StopGame();
-        $(function() {
+        $(function () {
             $("header").show();
         });
         $(paceman_img).show();
@@ -88,35 +88,35 @@ function ShowDiv(name) {
         document.getElementById("F_email").value = "";
         document.getElementById("F_date").value = "";
     }
-    if(name=="#welcome_div"){
+    if (name === "#welcome_div") {
         $("#one").show();
-        $("#two").hide(); 
+        $("#two").hide();
         document.getElementById("content").style.display = "";
     }
 }
 
 
-function assign_keyboard(diraction){
-    if(diraction=="up"){
-        if($("#up_button").val()=='')
+function assign_keyboard(direction) {
+    if (direction === "up") {
+        if ($("#up_button").val() === '')
             return 38;
         else
             return getKeyCode($("#up_button").val());
     }
-    if(diraction=="down"){
-        if($("#down_button").val()=='')
+    if (direction === "down") {
+        if ($("#down_button").val() === '')
             return 40;
         else
             return getKeyCode($("#down_button").val());
     }
-    if(diraction=="left"){
-        if($("#left_button").val()=='')
+    if (direction === "left") {
+        if ($("#left_button").val() === '')
             return 37;
         else
             return getKeyCode($("#left_button").val());
     }
-    if(diraction=="right"){
-        if($("#right_button").val()=='')
+    if (direction === "right") {
+        if ($("#right_button").val() === '')
             return 39;
         else
             return getKeyCode($("#right_button").val());
@@ -126,45 +126,45 @@ function assign_keyboard(diraction){
 
 function getKeyCode(char) {
     var keyCode = char.charCodeAt(0);
-    if(keyCode > 90) {  // 90 is keyCode for 'z'
-      return keyCode - 32;
+    if (keyCode > 90) {  // 90 is keyCode for 'z'
+        return keyCode - 32;
     }
     return keyCode;
-  }
+}
 
 
-  function assign_keyboard_game(diraction){
-    if(diraction=="up"){
-        if($("#up_button").val()=='')
+function assign_keyboard_game(direction) {
+    if (direction === "up") {
+        if ($("#up_button").val() === '')
             return "Up Arrow";
         else
             return $("#up_button").val();
     }
-    if(diraction=="down"){
-        if($("#down_button").val()=='')
+    if (direction === "down") {
+        if ($("#down_button").val() === '')
             return "Down Arrow";
         else
             return $("#down_button").val();
     }
-    if(diraction=="left"){
-        if($("#left_button").val()=='')
+    if (direction === "left") {
+        if ($("#left_button").val() === '')
             return "Left Arrow";
         else
             return $("#left_button").val();
     }
-    if(diraction=="right"){
-        if($("#right_button").val()=='')
+    if (direction === "right") {
+        if ($("#right_button").val() === '')
             return "Right Arrow";
         else
             return $("#right_button").val();
     }
 }
 
-function go_to_settings(){
+function go_to_settings() {
     ShowDiv("#settings_div");
     $(paceman_img).show();
     $(names).show();
-    $(function() {
+    $(function () {
         $("header").show();
         $("content").show()
     });

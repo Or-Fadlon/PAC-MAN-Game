@@ -1,4 +1,4 @@
-var is_valid;
+let is_valid;
 
 function check_details() {
     is_valid = true;
@@ -10,17 +10,16 @@ function check_details() {
     var email = $("#F_email").val();
     var date = $("#F_date").val();
     check_empty_fields_func(username, password, repeat_password, first_name, last_name, email, date);
-    if(!is_valid)
+    if (!is_valid)
         return;
-    general_check(password, new RegExp(/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,}$/),"This password is invalid:" + "\n" + "-Password must be at least 6 characters" + "\n" +
-    "-Password must contain both letters and numbers");
+    general_check(password, new RegExp(/^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{6,}$/), "This password is invalid:" + "\n" + "-Password must be at least 6 characters" + "\n" +
+        "-Password must contain both letters and numbers");
     check_repeat_password(password, repeat_password);
     general_check(first_name, new RegExp(/^[a-zA-Z]*$/), "your firstname is invalid - you can use only alphabetic letters");
-    general_check(last_name, new RegExp(/^[a-zA-Z]*$/),  "your lastname is invalid - you can use only alphabetic letters");
+    general_check(last_name, new RegExp(/^[a-zA-Z]*$/), "your lastname is invalid - you can use only alphabetic letters");
     general_check(email, new RegExp(/^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/), "This email is invalid!, please choose other valid email address :)");
     check_username(username);
     if (is_valid) {
-
         var new_user = {
             username: username,
             password: password,
@@ -34,7 +33,6 @@ function check_details() {
         $("#welcome_div").hide();
         $("#register_div").hide();
         $("#login_div").show();
-        $("#settings_div").hide();
         $("#about_div").hide();
         $("#settings_div").hide();
         $("#game_div").hide();
@@ -48,16 +46,16 @@ function check_empty_fields_func(username, password, repeat_password, first_name
     }
 }
 
-function general_check(password, pattern, aler) {
-    if (pattern.test(password) == false) {
-        alert(aler);
+function general_check(password, pattern, alert) {
+    if (!pattern.test(password)) {
+        alert(alert);
         is_valid = false;
     }
 }
 
 function check_repeat_password(password, repeat_password) {
-    if (repeat_password != password) {
-        alert("your repeated password dosent match your first password.");
+    if (repeat_password !== password) {
+        alert("your repeated password doesn't match your first password.");
         is_valid = false;
     }
 }
@@ -65,38 +63,31 @@ function check_repeat_password(password, repeat_password) {
 
 function check_username(username) {
 
-    if(window.localStorage.getItem(username)){
-        alert("This username allready exists!, please choose another username :)");
+    if (window.localStorage.getItem(username)) {
+        alert("This username already exists!, please choose another username :)");
         is_valid = false;
     }
 }
 
 function login() {
-
-    var is_user_found = false;
-    var username = $("#login_username").val();
-    var password = $("#login_pass").val();
+    let is_user_found = false;
+    let username = $("#login_username").val();
+    let password = $("#login_pass").val();
 
 
     let u = JSON.parse(window.localStorage.getItem(username));
-    if(u){
-        if (u.password == password) {
+    if (u) {
+        if (u.password === password) {
             is_user_found = true;
             curr_user = u;
         }
 
     }
 
-    if (is_user_found == true) {
+    if (is_user_found) {
         $("#one").hide();
-        $("#two").show(); 
-        $("#welcome_div").hide();
-        $("#register_div").hide();
-        $("#login_div").hide();
-        $("#settings_div").hide();
-        $("#about_div").hide();
-        $("#settings_div").show();
-        $("#game_div").hide();
+        $("#two").show();
+        ShowDiv("#settings_div");
     } else {
         alert("Your username or password are incorrect! please try again :)");
     }

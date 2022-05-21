@@ -48,20 +48,20 @@ class Enemy extends Moveable {
         }
     }
 
-    BFS (object_x, object_y, goal_x, goal_y, board) {
+    BFS(object_x, object_y, goal_x, goal_y, board) {
         let closed_list = {};
-        let queue = new Array();
-        let start_state = new Object;
-        let goal_state = new Object;
+        let queue = [];
+        let start_state = {};
+        let goal_state = {};
         start_state.x = object_x;
         start_state.y = object_y;
         goal_state.x = goal_x;
         goal_state.y = goal_y;
         let start_state_key = object_x.toString() + "," + object_y.toString(); //change var nme
-    
+
         closed_list[start_state_key] = start_state;
         queue.push(start_state);
-    
+
         while (queue.length != 0) {
             let current_state = queue.shift();
             if (current_state.x == goal_state.x && current_state.y == goal_state.y) {
@@ -77,69 +77,61 @@ class Enemy extends Moveable {
                 }
             }
         }
-        return new Array();
+        return [];
     }
-    
-    
+
+
     generateAllNeighbors(state, board) {
-        let successors = new Array();
-        if (state.x > 0 && board[state.y][state.x - 1] != 1){
-            let up_state = new Object;
+        let successors = [];
+        if (state.x > 0 && board[state.y][state.x - 1] != 1) {
+            let up_state = {};
             up_state.x = state.x - 1;
             up_state.y = state.y;
             successors.push(up_state);
         }
-        if(state.x < this.board[0].length - 1 && board[state.y][state.x + 1] != 1){
-            let down_state = new Object;
+        if (state.x < this.board[0].length - 1 && board[state.y][state.x + 1] != 1) {
+            let down_state = {};
             down_state.x = state.x + 1;
             down_state.y = state.y;
             successors.push(down_state);
         }
-        if(state.y > 0 && board[state.y - 1][state.x] != 1){
-            let left_state = new Object;
+        if (state.y > 0 && board[state.y - 1][state.x] != 1) {
+            let left_state = {};
             left_state.x = state.x;
             left_state.y = state.y - 1;
             successors.push(left_state);
         }
-        if(state.y < this.board.length - 1 && board[state.y + 1][state.x] != 1){
-            let right_state = new Object;
+        if (state.y < this.board.length - 1 && board[state.y + 1][state.x] != 1) {
+            let right_state = {};
             right_state.x = state.x;
             right_state.y = state.y + 1;
             successors.push(right_state);
         }
         return successors;
     }
-    
-    getPathFromState(start_state , goal_state) {
-        let path = new Array();
+
+    getPathFromState(start_state, goal_state) {
+        let path = [];
         let current = goal_state;
         path.unshift(current);
-        while (!(current.y == start_state.y && current.x == start_state.x)){
+        while (!(current.y == start_state.y && current.x == start_state.x)) {
             path.unshift(current);
             current = current.predecessor;
         }
         return path;
     }
 
-    Render (context) {
+    Render(context) {
         let s = this.height;
-        let top  = this.y * this.height;
+        let top = this.y * this.height;
         let left = this.x * this.width;
-    
-        // if (eatable && secondsAgo(eatable) > 8) {
-        //     eatable = null;
-        // }
-        
-        // if (eaten && secondsAgo(eaten) > 3) { 
-        //     eaten = null;
-        // }
-        
+
         let tl = left + s;
         let base = top + s - 3;
         let inc = s / 10;
 
-        let high =  3 * this.animation;
-        let low  = -3 * this.animation;
+        let high = 3 * this.animation;
+        let low = -3 * this.animation;
         this.animation = -this.animation;
 
         context.fillStyle = this.color;
@@ -147,23 +139,23 @@ class Enemy extends Moveable {
 
         context.moveTo(left, base);
 
-        context.quadraticCurveTo(left, top, left + (s/2),  top);
-        context.quadraticCurveTo(left + s, top, left+s,  base);
-        
+        context.quadraticCurveTo(left, top, left + (s / 2), top);
+        context.quadraticCurveTo(left + s, top, left + s, base);
+
         // Wavy things at the bottom
-        context.quadraticCurveTo(tl-(inc*1), base+high, tl - (inc * 2),  base);
-        context.quadraticCurveTo(tl-(inc*3), base+low, tl - (inc * 4),  base);
-        context.quadraticCurveTo(tl-(inc*5), base+high, tl - (inc * 6),  base);
-        context.quadraticCurveTo(tl-(inc*7), base+low, tl - (inc * 8),  base); 
-        context.quadraticCurveTo(tl-(inc*9), base+high, tl - (inc * 10), base); 
+        context.quadraticCurveTo(tl - (inc * 1), base + high, tl - (inc * 2), base);
+        context.quadraticCurveTo(tl - (inc * 3), base + low, tl - (inc * 4), base);
+        context.quadraticCurveTo(tl - (inc * 5), base + high, tl - (inc * 6), base);
+        context.quadraticCurveTo(tl - (inc * 7), base + low, tl - (inc * 8), base);
+        context.quadraticCurveTo(tl - (inc * 9), base + high, tl - (inc * 10), base);
 
         context.closePath();
         context.fill();
 
         context.beginPath();
         context.fillStyle = "white";
-        context.arc(left + 10,top + 12, s / 6, 0, 300, false);
-        context.arc((left + s) - 10,top + 12, s / 6, 0, 300, false);
+        context.arc(left + 10, top + 12, s / 6, 0, 300, false);
+        context.arc((left + s) - 10, top + 12, s / 6, 0, 300, false);
         context.closePath();
         context.fill();
 
@@ -177,8 +169,8 @@ class Enemy extends Moveable {
 
         context.beginPath();
         context.fillStyle = "#0048FF";
-        context.arc(left+10+off[this.diraction][0], top+12+off[this.diraction][1], s / 15, 0, 300, false);
-        context.arc((left+s)-10+off[this.diraction][0], top+12+off[this.diraction][1], s / 15, 0, 300, false);
+        context.arc(left + 10 + off[this.diraction][0], top + 12 + off[this.diraction][1], s / 15, 0, 300, false);
+        context.arc((left + s) - 10 + off[this.diraction][0], top + 12 + off[this.diraction][1], s / 15, 0, 300, false);
         context.closePath();
         context.fill();
 

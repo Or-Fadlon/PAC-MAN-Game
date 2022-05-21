@@ -33,15 +33,15 @@ class Player extends Moveable {
                 }
                 this.x = this.x + temp_vel_x;
                 this.y = this.y + temp_vel_y;
-                
+
                 let can_move = true;
                 for (let i = 0; i < this.walls.length; i++) {
                     if (this.IsCollide(this.walls[i])) {
                         can_move = false;
                         break;
-                    }            
+                    }
                 }
-                
+
                 this.x = old_x;
                 this.y = old_y;
 
@@ -67,7 +67,7 @@ class Player extends Moveable {
     Render(context) {
         let width = this.width;
         let height = this.height;
-        let center = new Object();
+        let center = {};
         center.x = this.x * width + 0.5 * width;
         center.y = this.y * height + 0.5 * height;
         context.beginPath();

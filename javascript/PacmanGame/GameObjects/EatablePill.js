@@ -1,4 +1,4 @@
-import { Eatable } from "./Eatable.js";
+import {Eatable} from "./Eatable.js";
 
 class EatablePill extends Eatable {
     constructor(x, y) {

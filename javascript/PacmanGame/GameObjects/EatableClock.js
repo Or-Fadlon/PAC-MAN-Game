@@ -1,4 +1,5 @@
-import { Eatable } from "./Eatable.js";
+import {Eatable} from "./Eatable.js";
+
 class EatableClock extends Eatable {
     constructor(x, y) {
         super(x, y, "clock");
@@ -11,4 +12,5 @@ class EatableClock extends Eatable {
         context.drawImage(this.image, this.x * this.width, this.y * this.height, this.width, this.height);
     }
 }
+
 export {EatableClock};

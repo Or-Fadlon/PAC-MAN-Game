@@ -33,7 +33,7 @@ function GetFreeIndexesArray(board) {
     let free_indexes = [];
     for (let i = 0; i < board[0].length; i++) {
         for (let j = 0; j < board.length; j++) {
-            if (board[i][j] == 0)
+            if (board[i][j] === 0)
                 free_indexes.push({x: j, y: i});
         }
     }

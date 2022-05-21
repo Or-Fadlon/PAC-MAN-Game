@@ -10,14 +10,14 @@ class HUD extends GameObject {
     Render(context, score, life, time) {
         let hub_width = this.hub_width;
         let hub_height = this.hub_height;
-        let center = new Object();
+        let center = {};
         center.x = this.x * this.width + 0.5 * hub_width;
         center.y = this.y * this.height + 0.5 * hub_height;
         context.beginPath();
         context.rect(center.x - 0.5 * hub_width, center.y - 0.5 * hub_height, hub_width, hub_height);
         context.fillStyle = "black"; //color
         context.fill();
-        
+
         context.font = "30px 'Merienda One'";
         context.fillStyle = "yellow"; //color
         context.textAlign = "start";

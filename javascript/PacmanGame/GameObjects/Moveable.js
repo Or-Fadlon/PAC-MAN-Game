@@ -18,13 +18,13 @@ class Moveable extends GameObject {
         let old_y = this.y;
         this.x = this.x + this.velocity_x;
         this.y = this.y + this.velocity_y;
-        
+
         let can_move = true;
         for (let i = 0; i < this.walls.length; i++) {
             if (this.IsCollide(this.walls[i])) {
                 can_move = false;
                 break;
-            }            
+            }
         }
 
         if (!can_move) {
