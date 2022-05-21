@@ -3,9 +3,9 @@ var curr_user;
 
 $(document).ready(function () {
     $("#welcome_label").click(() => ShowDiv("#welcome_div"));
-    $("#register_button").click(() => go_to_settings());
-    $("#register_label").click(() => go_to_settings());
-    $("#play_label").click(() => ShowDiv("#settings_div"));
+    $("#register_button").click(() => ShowDiv("#register_div"));
+    $("#register_label").click(() => ShowDiv("#register_div"));
+    $("#play_label").click(() => go_to_settings());
     $("#login_label").click(() => ShowDiv("#login_div"));
     $("#login_button").click(() => ShowDiv("#login_div"));
     $("#start_game_button").click(function () {
