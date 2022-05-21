@@ -42,47 +42,6 @@ $(document).ready(function () {
         window.StartGame(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_25_color, number_of_enemies, number_of_food, time);
     });
 
-    function ShowDiv(name) {
-        document.getElementById("content").style.display = "none";
-        let arr = ["#welcome_div", "#register_div", "#login_div", "#settings_div", "#about_div", "#game_div"];
-        arr.forEach(element => {
-            if (element == name) $(element).show();
-            else $(element).hide();
-        });
-        if(name!= "#game_div") {
-            window.StopGame();
-            $(function() {
-                $("header").show();
-            });
-            $(paceman_img).show();
-            $(names).show();
-            document.getElementById("login_username").value = "";
-            document.getElementById("login_pass").value = "";
-            document.getElementById("up_button").value = "";
-            document.getElementById("down_button").value = "";
-            document.getElementById("left_button").value = "";
-            document.getElementById("right_button").value = "";
-            document.getElementById("pac_dots_num_settings").value = 50;
-            document.getElementById("5_color").value = "#FF726f";
-            document.getElementById("15_color").value = "#88C0D3";
-            document.getElementById("25_color").value = "#51C251";
-            document.getElementById("time_setting").value = 60;
-            document.getElementById("monster_setting").value = 1;
-            document.getElementById("F_username").value = "";
-            document.getElementById("F_password").value = "";
-            document.getElementById("F_repeat_password").value = "";
-            document.getElementById("F_firstName").value = "";
-            document.getElementById("F_lastName").value = "";
-            document.getElementById("F_email").value = "";
-            document.getElementById("F_date").value = "";
-        }
-        if(name=="#welcome_div"){
-            $("#one").show();
-            $("#two").hide(); 
-            document.getElementById("content").style.display = "";
-        }
-    }
-
     var new_user = {
         username: "k",
         password: "k",
@@ -94,6 +53,47 @@ $(document).ready(function () {
     // all_users = new Array(new_user);
     window.localStorage.setItem("k", JSON.stringify(new_user));
 });
+
+function ShowDiv(name) {
+    document.getElementById("content").style.display = "none";
+    let arr = ["#welcome_div", "#register_div", "#login_div", "#settings_div", "#about_div", "#game_div"];
+    arr.forEach(element => {
+        if (element == name) $(element).show();
+        else $(element).hide();
+    });
+    if(name!= "#game_div") {
+        window.StopGame();
+        $(function() {
+            $("header").show();
+        });
+        $(paceman_img).show();
+        $(names).show();
+        document.getElementById("login_username").value = "";
+        document.getElementById("login_pass").value = "";
+        document.getElementById("up_button").value = "";
+        document.getElementById("down_button").value = "";
+        document.getElementById("left_button").value = "";
+        document.getElementById("right_button").value = "";
+        document.getElementById("pac_dots_num_settings").value = 50;
+        document.getElementById("5_color").value = "#FF726f";
+        document.getElementById("15_color").value = "#88C0D3";
+        document.getElementById("25_color").value = "#51C251";
+        document.getElementById("time_setting").value = 60;
+        document.getElementById("monster_setting").value = 1;
+        document.getElementById("F_username").value = "";
+        document.getElementById("F_password").value = "";
+        document.getElementById("F_repeat_password").value = "";
+        document.getElementById("F_firstName").value = "";
+        document.getElementById("F_lastName").value = "";
+        document.getElementById("F_email").value = "";
+        document.getElementById("F_date").value = "";
+    }
+    if(name=="#welcome_div"){
+        $("#one").show();
+        $("#two").hide(); 
+        document.getElementById("content").style.display = "";
+    }
+}
 
 
 function assign_keyboard(diraction){
@@ -158,4 +158,24 @@ function getKeyCode(char) {
         else
             return $("#right_button").val();
     }
+}
+
+function go_to_settings(){
+    ShowDiv("#settings_div");
+    $(paceman_img).show();
+    $(names).show();
+    $(function() {
+        $("header").show();
+        $("content").show()
+    });
+    document.getElementById("up_button").value = "";
+    document.getElementById("down_button").value = "";
+    document.getElementById("left_button").value = "";
+    document.getElementById("right_button").value = "";
+    document.getElementById("pac_dots_num_settings").value = 50;
+    document.getElementById("5_color").value = "#FF726f";
+    document.getElementById("15_color").value = "#88C0D3";
+    document.getElementById("25_color").value = "#51C251";
+    document.getElementById("time_setting").value = 60;
+    document.getElementById("monster_setting").value = 1;
 }
