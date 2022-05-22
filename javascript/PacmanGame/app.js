@@ -178,6 +178,15 @@ function Start(canvas, up, right, down, left, ball_5_color, ball_15_color, ball_
         false
     );
     ///
+    window.addEventListener(
+        "keydown",
+        function(e) {
+        // space and arrow keys
+        if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+            e.preventDefault();
+        }
+    },
+    false);
 
     interval = setInterval(GameLoop, interval_time);
     audio_player.Play("back", background_music_volume, true);
