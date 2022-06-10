@@ -46,9 +46,9 @@ function check_empty_fields_func(username, password, repeat_password, first_name
     }
 }
 
-function general_check(password, pattern, alert) {
+function general_check(password, pattern, massege) {
     if (!pattern.test(password)) {
-        alert(alert);
+        alert(massege);
         is_valid = false;
     }
 }

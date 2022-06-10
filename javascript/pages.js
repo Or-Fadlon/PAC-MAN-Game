@@ -87,6 +87,7 @@ function ShowDiv(name) {
         document.getElementById("F_lastName").value = "";
         document.getElementById("F_email").value = "";
         document.getElementById("F_date").value = "";
+
     }
     if (name === "#welcome_div") {
         $("#one").show();
