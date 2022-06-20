@@ -1,5 +1,5 @@
 # Pᗣᗧ•••MᗣN
-### Website address: [https://web-development-environments-2022.github.io/assignment2-316394717_205965908/](https://web-development-environments-2022.github.io/assignment2-316394717_205965908/)
+### Website address: [Click the link](https://or-fadlon.github.io/PAC-MAN-Game)
 ## Student Data
 ### Or (Orel) Fadlon
 - GitHub user name: Or-Fadlon
