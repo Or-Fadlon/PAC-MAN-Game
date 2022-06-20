@@ -1,12 +1,10 @@
 # Pᗣᗧ•••MᗣN
 ### Website address: [https://web-development-environments-2022.github.io/assignment2-316394717_205965908/](https://web-development-environments-2022.github.io/assignment2-316394717_205965908/)
 ## Student Data
-### Orel Fadlon
-- ID: 316394717
+### Or (Orel) Fadlon
 - GitHub user name: Or-Fadlon
 - Mail: fadlonor@post.bgu.ac.il
 ### Elran Oren
-- ID: 205965908
 - GitHub user name: Elranoren
 - Mail: elranor@post.bgu.ac.il
 ## Summery
